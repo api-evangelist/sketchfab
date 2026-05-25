@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/sketchfab/sketchfab-model-schema.json",
+  "title": "Sketchfab Model",
+  "description": "JSON Schema for the Sketchfab Data API v3 Model resource as returned by GET /v3/models and GET /v3/models/{uid}.",
+  "type": "object",
+  "required": ["uid", "name", "uri"],
+  "properties": {
+    "uid": {
+      "type": "string",
+      "description": "Sketchfab unique identifier (hex string used in viewer and embed URLs)."
+    },
+    "uri": {
+      "type": "string",
+      "format": "uri",
+      "description": "Canonical API URI for the model resource."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable model name."
+    },
+    "description": {
+      "type": "string",
+      "description": "Long-form description written by the uploader."
+    },
+    "viewerUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Public viewer page on sketchfab.com."
+    },
+    "embedUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Embeddable iframe URL for the viewer."
+    },
+    "thumbnails": {
+      "type": "object",
+      "description": "Pre-rendered thumbnail images at varying sizes.",
+      "properties": {
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "uid": { "type": "string" },
+              "url": { "type": "string", "format": "uri" },
+              "width": { "type": "integer" },
+              "height": { "type": "integer" },
+              "size": { "type": "integer" }
+            }
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Tag objects attached to the model.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "slug": { "type": "string" },
+          "name": { "type": "string" },
+          "uri": { "type": "string", "format": "uri" }
+        }
+      }
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "slug": { "type": "string" },
+          "name": { "type": "string" },
+          "uri": { "type": "string", "format": "uri" }
+        }
+      }
+    },
+    "license": {
+      "type": "object",
+      "description": "License metadata. Sketchfab supports a fixed set of Creative Commons licenses plus the paid Standard (st) license.",
+      "properties": {
+        "slug": {
+          "type": "string",
+          "enum": ["cc-by", "cc-by-sa", "cc-by-nd", "cc-by-nc", "cc-by-nc-sa", "cc-by-nc-nd", "cc0", "st", "ed"]
+        },
+        "label": { "type": "string" },
+        "uri": { "type": "string", "format": "uri" }
+      }
+    },
+    "user": {
+      "type": "object",
+      "description": "Uploader profile.",
+      "properties": {
+        "uid": { "type": "string" },
+        "username": { "type": "string" },
+        "displayName": { "type": "string" },
+        "profileUrl": { "type": "string", "format": "uri" },
+        "account": {
+          "type": "string",
+          "description": "Plan slug for the user (basic, plus, pro, premium, business, enterprise)."
+        }
+      }
+    },
+    "isDownloadable": {
+      "type": "boolean",
+      "description": "True when the model can be retrieved via the Download API."
+    },
+    "isPublished": {
+      "type": "boolean"
+    },
+    "private": {
+      "type": "boolean"
+    },
+    "password": {
+      "type": "string",
+      "nullable": true
+    },
+    "animationCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "vertexCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "faceCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "viewCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "likeCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "commentCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "publishedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "staffpickedAt": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    }
+  }
+}

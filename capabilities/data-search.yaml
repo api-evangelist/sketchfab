@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Sketchfab Data API — Search
+  description: 'Sketchfab Data API — Search. 1 operation: unified search across models, collections, and users. Self-contained Naftiko capability.'
+  tags:
+  - Sketchfab
+  - Search
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    SKETCHFAB_API_TOKEN: SKETCHFAB_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: data-search
+    baseUri: https://api.sketchfab.com
+    description: Sketchfab Search business capability.
+    resources:
+    - name: v3-search
+      path: /v3/search
+      operations:
+      - name: search
+        method: GET
+        description: Search Sketchfab
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: query
+          type: string
+        - name: q
+          in: query
+          type: string
+    authentication:
+      type: apikey
+      key: Authorization
+      value: 'Token {{env.SKETCHFAB_API_TOKEN}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: data-search-rest
+    port: 8080
+    description: REST adapter for Sketchfab Search.
+    resources:
+    - path: /v3/v3/search
+      name: v3-search
+      operations:
+      - method: GET
+        name: search
+        description: Search Sketchfab
+        call: data-search.search
+        with:
+          type: rest.type
+          q: rest.q
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: data-search-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Sketchfab Search.
+    tools:
+    - name: sketchfab-search
+      description: Search Sketchfab
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: data-search.search
+      with:
+        type: tools.type
+        q: tools.q
+      outputParameters:
+      - type: object
+        mapping: $.

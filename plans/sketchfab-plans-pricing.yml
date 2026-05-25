@@ -1,0 +1,125 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Sketchfab
+providerId: sketchfab
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - 3D
+  - Marketplace
+  - Subscription
+description: >
+  Sketchfab publishes creator-side subscription plans (Basic, Plus, Premium, Premium Pro,
+  Enterprise) governing upload volume, model size, advanced viewer features, and
+  organization tooling. Following the Fab.com launch, marketplace buy/sell transactions
+  have migrated to Fab and per-transaction store commissions are now governed by Fab's
+  seller terms rather than Sketchfab's historical Store Seller Program. The pricing
+  surface is volatile and reflected here as a non-reconciled summary; consult
+  sketchfab.com/plans and the Fab help center for current numbers.
+sources:
+  - https://sketchfab.com/plans
+  - https://www.fab.com
+  - https://support.fab.com/s/?ProductOrigin=Sketchfab
+plans:
+  - id: sketchfab-basic
+    name: Basic
+    type: subscription
+    description: Free tier for individual creators publishing public models.
+    entries:
+      - label: Seat
+        name: seat
+        type: flat
+        metric: user
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0'
+        userMultiplied: false
+    features:
+      - Publish public 3D models
+      - Standard viewer with WebGL/WebXR
+      - Up to 50 MB model size and 10 active models
+      - Public Data API and Viewer API access
+  - id: sketchfab-plus
+    name: Plus
+    type: subscription
+    description: Entry-level paid plan for serious hobbyists and professionals.
+    entries:
+      - label: Seat
+        name: seat
+        type: flat
+        metric: user
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '9'
+        userMultiplied: false
+    features:
+      - Higher upload limits and unlimited public models
+      - Private models with password protection
+      - Branded watermark removal in the viewer
+  - id: sketchfab-premium
+    name: Premium
+    type: subscription
+    description: Professional plan with full viewer customization.
+    entries:
+      - label: Seat
+        name: seat
+        type: flat
+        metric: user
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '19'
+        userMultiplied: false
+    features:
+      - Custom viewer branding and UI
+      - Advanced viewer API features (post-processing, configurator support)
+      - Increased private-model and storage allowances
+  - id: sketchfab-premium-pro
+    name: Premium Pro
+    type: subscription
+    description: Higher-volume professional plan with team features.
+    entries:
+      - label: Seat
+        name: seat
+        type: flat
+        metric: user
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '79'
+        userMultiplied: true
+    features:
+      - Multiple seats and project workspaces
+      - Higher model-size limits and analytics
+      - Priority support
+  - id: sketchfab-enterprise
+    name: Enterprise
+    type: subscription
+    description: Custom-priced contract for organizations.
+    entries:
+      - label: Seat
+        name: seat
+        type: custom
+        metric: contract
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: 'Call'
+        userMultiplied: false
+    features:
+      - SSO and SCIM provisioning
+      - Application-level download authorization (no end-user OAuth required)
+      - Custom API quotas and dedicated support
+      - Centralized billing and admin console
+notes:
+  - Sketchfab's Store seller program has been folded into Fab.com's marketplace; refer to Fab seller terms for the current commission split.
+  - The Sketchfab Download API requires end-user OAuth except for Enterprise contracts.

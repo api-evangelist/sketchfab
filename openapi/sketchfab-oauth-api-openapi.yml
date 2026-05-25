@@ -1,0 +1,134 @@
+openapi: 3.1.0
+info:
+  title: Sketchfab OAuth 2.0 API
+  description: >
+    Sketchfab OAuth 2.0 authorization server. Supports the Authorization Code,
+    Implicit, and Resource Owner Password Credentials grant types plus refresh
+    token rotation. Access tokens are valid for one month; the Implicit flow
+    does not issue refresh tokens.
+  version: '2.0'
+  contact:
+    name: Sketchfab Developer Support
+    url: https://support.fab.com/s/?ProductOrigin=Sketchfab
+  license:
+    name: Sketchfab Developer Terms of Use
+    url: https://sketchfab.com/developers/terms
+servers:
+  - url: https://sketchfab.com
+    description: Production
+tags:
+  - name: OAuth
+    description: OAuth 2.0 authorization and token endpoints.
+paths:
+  /oauth2/authorize/:
+    get:
+      summary: OAuth Authorize Endpoint
+      description: Initiate the Authorization Code or Implicit flow. The end user is presented with the Sketchfab consent screen and on approval the browser is redirected back to the registered redirect_uri with either a `code` query parameter or an `access_token` URL fragment.
+      operationId: oauthAuthorize
+      tags:
+        - OAuth
+      parameters:
+        - name: response_type
+          in: query
+          required: true
+          description: '`code` (Authorization Code) or `token` (Implicit).'
+          schema:
+            type: string
+            enum:
+              - code
+              - token
+        - name: client_id
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: redirect_uri
+          in: query
+          required: false
+          description: Redirect URI registered with the OAuth application.
+          schema:
+            type: string
+            format: uri
+        - name: state
+          in: query
+          description: Recommended CSRF / replay protection nonce.
+          schema:
+            type: string
+        - name: approval_prompt
+          in: query
+          description: Set to `force` to always re-prompt the user for consent.
+          schema:
+            type: string
+      responses:
+        '302':
+          description: Redirect to the application's redirect_uri carrying `code` or `access_token`.
+  /oauth2/token/:
+    post:
+      summary: OAuth Token Endpoint
+      description: Exchange an authorization code for tokens, refresh an access token, or perform a password grant. Requires Content-Type `application/x-www-form-urlencoded`.
+      operationId: oauthToken
+      tags:
+        - OAuth
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - grant_type
+                - client_id
+                - client_secret
+              properties:
+                grant_type:
+                  type: string
+                  enum:
+                    - authorization_code
+                    - refresh_token
+                    - password
+                client_id:
+                  type: string
+                client_secret:
+                  type: string
+                code:
+                  type: string
+                  description: Authorization code (authorization_code grant).
+                redirect_uri:
+                  type: string
+                  format: uri
+                refresh_token:
+                  type: string
+                  description: Refresh token (refresh_token grant).
+                username:
+                  type: string
+                  description: Sketchfab username (password grant).
+                password:
+                  type: string
+                  description: Sketchfab password (password grant).
+      responses:
+        '200':
+          description: Token response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          description: Invalid request or grant.
+components:
+  schemas:
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+          example: Bearer
+        expires_in:
+          type: integer
+          description: Lifetime of the access token in seconds (typically 30 days).
+        refresh_token:
+          type: string
+          description: Issued for Authorization Code and Password grants only.
+        scope:
+          type: string

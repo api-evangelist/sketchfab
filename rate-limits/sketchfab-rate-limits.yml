@@ -1,0 +1,60 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Sketchfab
+providerId: sketchfab
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - 3D
+  - Rate Limiting
+description: >
+  Sketchfab does not publish a single canonical rate-limit table in its developer
+  portal. In practice the Data API enforces conservative per-token request rates
+  appropriate to a publishing platform, and download URLs are short-lived signed
+  links. The Developer Guidelines also impose qualitative rules around aggressive
+  scraping and re-distribution. This artifact captures the observed envelope and
+  the headers returned by the platform.
+sources:
+  - https://sketchfab.com/developers/guidelines
+  - https://sketchfab.com/developers/data-api
+  - https://sketchfab.com/developers/download-api
+headers:
+  limit: X-RateLimit-Limit
+  remaining: X-RateLimit-Remaining
+  reset: X-RateLimit-Reset
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+  unauthorized: 401
+  forbidden: 403
+algorithm: fixed-window
+limits:
+  - tier: Personal API token / OAuth (default)
+    api: Data API
+    rpm: 60
+    notes: Conservative default. Authenticated calls receive higher headroom than anonymous ones.
+  - tier: Anonymous (public read)
+    api: Data API
+    rpm: 30
+    notes: Public model search and detail endpoints. Aggressive crawling is blocked.
+  - tier: Enterprise contract
+    api: Data API
+    rpm: negotiated
+    notes: Custom quotas negotiated with Sketchfab.
+  - tier: Any
+    api: Download API
+    rpm: 30
+    notes: Download URLs are short-lived signed links; rapid replays are throttled.
+  - tier: Any
+    api: oEmbed
+    rpm: 60
+    notes: Cached aggressively at the CDN edge.
+policies:
+  - name: Developer Guidelines
+    description: Sketchfab's Developer Guidelines forbid bulk re-distribution and excessive crawling and reserve the right to revoke tokens that violate these rules.
+  - name: Signed download URLs
+    description: Download API responses contain signed URLs that expire within minutes; callers must download before expiry.
+  - name: License compliance
+    description: Downloaders must respect the Creative Commons / Standard license attached to each model.

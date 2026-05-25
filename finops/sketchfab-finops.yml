@@ -1,0 +1,84 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Sketchfab
+providerId: sketchfab
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - FinOps
+  - Cost Management
+  - 3D
+  - Subscription
+description: >
+  FOCUS-aligned FinOps definition for Sketchfab. Sketchfab is primarily a
+  seat-based subscription service for creators (Basic / Plus / Premium /
+  Premium Pro / Enterprise) layered on top of free public consumption of the
+  3D viewer. Marketplace transactions have migrated to Fab.com and are billed
+  through Epic's unified commerce stack rather than Sketchfab directly.
+sources:
+  - https://sketchfab.com/plans
+  - https://sketchfab.com/developers/data-api
+  - https://www.fab.com
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Sketchfab (Epic Games)
+serviceCategory: Media and Content
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Subscription
+    - Usage
+    - Tax
+    - Credit
+    - Adjustment
+  primaryUnit: seat
+  secondaryUnits:
+    - storage_gb
+    - model_count
+    - download
+focusColumns:
+  ServiceName: Sketchfab
+  ServiceCategory: Media and Content
+  ProviderName: Sketchfab
+  PublisherName: Sketchfab (Epic Games)
+  InvoiceIssuerName: Epic Games
+  PricingCategory: Subscription
+  PricingUnit: seat-month
+  BillingCurrency: USD
+meters:
+  - name: subscription_seat
+    unit: seat
+    aggregation: count
+    dimensions:
+      - plan
+      - org
+  - name: storage_bytes
+    unit: byte
+    aggregation: max
+    dimensions:
+      - org
+      - project
+  - name: model_count
+    unit: model
+    aggregation: count
+    dimensions:
+      - org
+      - visibility
+  - name: download_event
+    unit: download
+    aggregation: sum
+    dimensions:
+      - org
+      - model
+      - format
+notes:
+  - Sketchfab does not currently expose a programmatic usage/billing API; FinOps reporting must be sourced from account/admin portals or NetSuite invoices for Enterprise contracts.
+  - Marketplace seller revenue flows through Fab.com and follows Epic's seller terms; reconcile against Fab payouts rather than Sketchfab invoices.

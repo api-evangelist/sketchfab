@@ -1,0 +1,214 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "sketchfab": "https://api.sketchfab.com/v3/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "cc": "http://creativecommons.org/ns#",
+
+    "Model": {
+      "@id": "sketchfab:Model",
+      "@context": {
+        "uid": {
+          "@id": "sketchfab:Model/uid",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "viewerUrl": {
+          "@id": "schema:url",
+          "@type": "xsd:anyURI"
+        },
+        "embedUrl": {
+          "@id": "schema:embedUrl",
+          "@type": "xsd:anyURI"
+        },
+        "thumbnails": {
+          "@id": "schema:thumbnail"
+        },
+        "tags": {
+          "@id": "schema:keywords",
+          "@container": "@set"
+        },
+        "categories": {
+          "@id": "schema:genre",
+          "@container": "@set"
+        },
+        "license": {
+          "@id": "schema:license",
+          "@type": "cc:License"
+        },
+        "user": {
+          "@id": "schema:creator",
+          "@type": "sketchfab:User"
+        },
+        "isDownloadable": {
+          "@id": "sketchfab:Model/isDownloadable",
+          "@type": "xsd:boolean"
+        },
+        "animationCount": {
+          "@id": "sketchfab:Model/animationCount",
+          "@type": "xsd:integer"
+        },
+        "vertexCount": {
+          "@id": "sketchfab:Model/vertexCount",
+          "@type": "xsd:integer"
+        },
+        "faceCount": {
+          "@id": "sketchfab:Model/faceCount",
+          "@type": "xsd:integer"
+        },
+        "viewCount": {
+          "@id": "schema:interactionStatistic",
+          "@type": "xsd:integer"
+        },
+        "likeCount": {
+          "@id": "sketchfab:Model/likeCount",
+          "@type": "xsd:integer"
+        },
+        "commentCount": {
+          "@id": "schema:commentCount",
+          "@type": "xsd:integer"
+        },
+        "publishedAt": {
+          "@id": "schema:datePublished",
+          "@type": "xsd:dateTime"
+        },
+        "createdAt": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "User": {
+      "@id": "sketchfab:User",
+      "@context": {
+        "uid": {
+          "@id": "sketchfab:User/uid",
+          "@type": "xsd:string"
+        },
+        "username": {
+          "@id": "schema:alternateName",
+          "@type": "xsd:string"
+        },
+        "displayName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "profileUrl": {
+          "@id": "schema:url",
+          "@type": "xsd:anyURI"
+        },
+        "account": {
+          "@id": "sketchfab:User/account",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Collection": {
+      "@id": "sketchfab:Collection",
+      "@context": {
+        "uid": {
+          "@id": "sketchfab:Collection/uid",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "modelCount": {
+          "@id": "sketchfab:Collection/modelCount",
+          "@type": "xsd:integer"
+        },
+        "user": {
+          "@id": "schema:creator",
+          "@type": "sketchfab:User"
+        }
+      }
+    },
+
+    "Comment": {
+      "@id": "sketchfab:Comment",
+      "@context": {
+        "uid": {
+          "@id": "sketchfab:Comment/uid",
+          "@type": "xsd:string"
+        },
+        "body": {
+          "@id": "schema:text",
+          "@type": "xsd:string"
+        },
+        "user": {
+          "@id": "schema:author",
+          "@type": "sketchfab:User"
+        },
+        "createdAt": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "License": {
+      "@id": "cc:License",
+      "@context": {
+        "slug": {
+          "@id": "sketchfab:License/slug",
+          "@type": "xsd:string"
+        },
+        "label": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "uri": {
+          "@id": "cc:legalcode",
+          "@type": "xsd:anyURI"
+        }
+      }
+    },
+
+    "OEmbedResponse": {
+      "@id": "sketchfab:OEmbedResponse",
+      "@context": {
+        "type": {
+          "@id": "sketchfab:OEmbedResponse/type",
+          "@type": "xsd:string"
+        },
+        "version": {
+          "@id": "sketchfab:OEmbedResponse/version",
+          "@type": "xsd:string"
+        },
+        "provider_name": {
+          "@id": "schema:provider",
+          "@type": "xsd:string"
+        },
+        "provider_url": {
+          "@id": "schema:url",
+          "@type": "xsd:anyURI"
+        },
+        "html": {
+          "@id": "sketchfab:OEmbedResponse/html",
+          "@type": "xsd:string"
+        },
+        "thumbnail_url": {
+          "@id": "schema:thumbnailUrl",
+          "@type": "xsd:anyURI"
+        }
+      }
+    }
+  }
+}

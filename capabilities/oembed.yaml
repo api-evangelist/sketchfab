@@ -1,0 +1,87 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Sketchfab oEmbed API
+  description: 'Sketchfab oEmbed API. 1 operation: resolve a Sketchfab model or playlist URL into an oEmbed JSON response carrying an iframe embed snippet. Self-contained Naftiko capability.'
+  tags:
+  - Sketchfab
+  - oEmbed
+  - Embed
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds: []
+capability:
+  consumes:
+  - type: http
+    namespace: oembed
+    baseUri: https://sketchfab.com
+    description: Sketchfab oEmbed business capability. Unauthenticated.
+    resources:
+    - name: oembed
+      path: /oembed
+      operations:
+      - name: getoembed
+        method: GET
+        description: Retrieve oEmbed Response
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: url
+          in: query
+          type: string
+          required: true
+        - name: maxwidth
+          in: query
+          type: integer
+        - name: maxheight
+          in: query
+          type: integer
+        - name: format
+          in: query
+          type: string
+    authentication:
+      type: none
+  exposes:
+  - type: rest
+    namespace: oembed-rest
+    port: 8080
+    description: REST adapter for Sketchfab oEmbed.
+    resources:
+    - path: /v1/oembed
+      name: oembed
+      operations:
+      - method: GET
+        name: getoembed
+        description: Retrieve oEmbed Response
+        call: oembed.getoembed
+        with:
+          url: rest.url
+          maxwidth: rest.maxwidth
+          maxheight: rest.maxheight
+          format: rest.format
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: oembed-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Sketchfab oEmbed.
+    tools:
+    - name: sketchfab-oembed
+      description: Retrieve oEmbed Response
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: oembed.getoembed
+      with:
+        url: tools.url
+        maxwidth: tools.maxwidth
+        maxheight: tools.maxheight
+        format: tools.format
+      outputParameters:
+      - type: object
+        mapping: $.

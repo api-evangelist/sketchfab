@@ -1,0 +1,104 @@
+openapi: 3.1.0
+info:
+  title: Sketchfab oEmbed API
+  description: >
+    The Sketchfab oEmbed endpoint follows the oEmbed protocol
+    (https://oembed.com/). Given a Sketchfab model or playlist URL it returns
+    a JSON response containing an HTML `<iframe>` snippet that embeds the
+    Sketchfab viewer. The returned viewer always uses a 16:9 aspect ratio
+    regardless of the maxwidth and maxheight parameters.
+  version: '1.0'
+  contact:
+    name: Sketchfab Developer Support
+    url: https://support.fab.com/s/?ProductOrigin=Sketchfab
+  license:
+    name: Sketchfab Developer Terms of Use
+    url: https://sketchfab.com/developers/terms
+servers:
+  - url: https://sketchfab.com
+    description: Production
+tags:
+  - name: oEmbed
+    description: oEmbed-protocol embed endpoint.
+paths:
+  /oembed:
+    get:
+      summary: Retrieve oEmbed Response
+      description: Resolve a Sketchfab model or playlist URL into an oEmbed JSON response carrying an iframe embed snippet.
+      operationId: getOEmbed
+      tags:
+        - oEmbed
+      parameters:
+        - name: url
+          in: query
+          required: true
+          description: The full Sketchfab model or playlist URL.
+          schema:
+            type: string
+            format: uri
+        - name: maxwidth
+          in: query
+          description: Maximum width of the returned viewer in pixels (the aspect ratio is always 16:9).
+          schema:
+            type: integer
+        - name: maxheight
+          in: query
+          description: Maximum height of the returned viewer in pixels (the aspect ratio is always 16:9).
+          schema:
+            type: integer
+        - name: format
+          in: query
+          description: Response format. Only `json` is supported.
+          schema:
+            type: string
+            default: json
+            enum:
+              - json
+      responses:
+        '200':
+          description: oEmbed response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OEmbedResponse'
+        '404':
+          description: URL is not a recognised Sketchfab resource.
+components:
+  schemas:
+    OEmbedResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          example: rich
+        version:
+          type: string
+          example: '1.0'
+        provider_name:
+          type: string
+          example: Sketchfab
+        provider_url:
+          type: string
+          format: uri
+          example: https://sketchfab.com
+        title:
+          type: string
+        author_name:
+          type: string
+        author_url:
+          type: string
+          format: uri
+        html:
+          type: string
+          description: The embeddable iframe HTML snippet.
+        width:
+          type: integer
+        height:
+          type: integer
+        thumbnail_url:
+          type: string
+          format: uri
+        thumbnail_width:
+          type: integer
+        thumbnail_height:
+          type: integer
