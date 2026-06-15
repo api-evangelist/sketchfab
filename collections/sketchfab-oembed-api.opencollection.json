@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sketchfab oEmbed API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "oEmbed",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve oEmbed Response",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sketchfab.com/oembed",
+            "params": [
+              {
+                "name": "url",
+                "value": "",
+                "type": "query",
+                "description": "The full Sketchfab model or playlist URL."
+              },
+              {
+                "name": "maxwidth",
+                "value": "",
+                "type": "query",
+                "description": "Maximum width of the returned viewer in pixels (the aspect ratio is always 16:9)."
+              },
+              {
+                "name": "maxheight",
+                "value": "",
+                "type": "query",
+                "description": "Maximum height of the returned viewer in pixels (the aspect ratio is always 16:9)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. Only `json` is supported."
+              }
+            ]
+          },
+          "docs": "Resolve a Sketchfab model or playlist URL into an oEmbed JSON response carrying an iframe embed snippet."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

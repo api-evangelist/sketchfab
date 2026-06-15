@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sketchfab Download API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://sketchfab.com/oauth2/authorize/",
+      "accessTokenUrl": "https://sketchfab.com/oauth2/token/",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Download",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Model Download URLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sketchfab.com/v3/models/:uid/download",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "The Sketchfab model UID."
+              }
+            ]
+          },
+          "docs": "Returns short-lived signed URLs to the glTF, GLB, and USDZ archives for the requested model. The model must be marked downloadable and the caller must have permission to download it (license-compatible or owned)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

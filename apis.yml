@@ -1,312 +1,310 @@
 aid: sketchfab
 url: https://raw.githubusercontent.com/api-evangelist/sketchfab/refs/heads/main/apis.yml
 apis:
-- aid: sketchfab:sketchfab-data-api
-  name: Sketchfab Data API
-  tags:
+  - aid: sketchfab:sketchfab-data-api
+    name: Sketchfab Data API
+    tags:
+      - 3D
+      - Models
+      - Marketplace
+      - Content
+    humanURL: https://sketchfab.com/developers/data-api
+    baseURL: https://api.sketchfab.com
+    properties:
+      - url: https://sketchfab.com/developers/data-api
+        type: Documentation
+      - url: https://docs.sketchfab.com/data-api/v3/index.html
+        type: Documentation
+        name: Sketchfab Data API v3 Reference
+      - url: openapi/sketchfab-data-api-openapi.yml
+        type: OpenAPI
+      - url: json-schema/sketchfab-model-schema.json
+        type: JSONSchema
+      - url: json-ld/sketchfab-context.jsonld
+        type: JSONLD
+    description: >-
+      REST API for reading and writing Sketchfab data. Upload, list, update, and delete 3D models; manage collections,
+      comments, likes, and bookmarks; search the public model catalog; and manage user, organization, and project
+      resources. Supports OAuth 2.0 and personal API token authentication. Base URL is https://api.sketchfab.com with
+      version 3 endpoints under /v3/.
+  - aid: sketchfab:sketchfab-viewer-api
+    name: Sketchfab Viewer API
+    tags:
+      - 3D
+      - Viewer
+      - JavaScript
+      - WebGL
+      - Embed
+    humanURL: https://sketchfab.com/developers/viewer
+    properties:
+      - url: https://sketchfab.com/developers/viewer
+        type: Documentation
+      - url: https://sketchfab.com/developers/viewer/functions
+        type: Documentation
+        name: Viewer API Functions Reference
+      - url: https://sketchfab.com/developers/viewer/initialization
+        type: Documentation
+        name: Viewer API Initialization
+      - url: https://github.com/sketchfab/viewer-api
+        type: SourceCode
+        name: Viewer API GitHub
+      - url: https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js
+        type: SDK
+        name: Sketchfab Viewer JavaScript SDK
+    description: >-
+      Client-side JavaScript library for controlling an embedded Sketchfab 3D viewer. Exposes camera control, screenshot
+      capture, annotation, material and texture manipulation, post-processing filters, animation playback, and an event
+      stream (viewerready, click, annotationSelect, animationPlay, etc.). Distributed as a browser-loadable script from
+      static.sketchfab.com and published on npm.
+  - aid: sketchfab:sketchfab-download-api
+    name: Sketchfab Download API
+    tags:
+      - 3D
+      - Models
+      - Download
+      - glTF
+      - USDZ
+    humanURL: https://sketchfab.com/developers/download-api
+    properties:
+      - url: https://sketchfab.com/developers/download-api
+        type: Documentation
+      - url: openapi/sketchfab-download-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Programmatic download of 3D models from Sketchfab's library in glTF, GLB, and USDZ formats. Requires end-user
+      OAuth authentication. Source formats (FBX, OBJ, etc.) are not exposed through the public API; application-level
+      download access without user authentication requires a contract with Sketchfab.
+  - aid: sketchfab:sketchfab-oembed-api
+    name: Sketchfab oEmbed API
+    tags:
+      - 3D
+      - Embed
+      - oEmbed
+      - Models
+    humanURL: https://sketchfab.com/developers/oembed
+    properties:
+      - url: https://sketchfab.com/developers/oembed
+        type: Documentation
+      - url: openapi/sketchfab-oembed-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      oEmbed-protocol endpoint at https://sketchfab.com/oembed that returns JSON containing an HTML <iframe> snippet for
+      any Sketchfab model or playlist URL. Supports maxwidth and maxheight parameters; always returns a 16:9 viewer.
+  - aid: sketchfab:sketchfab-oauth-api
+    name: Sketchfab OAuth 2.0 API
+    tags:
+      - OAuth
+      - Authentication
+      - Authorization
+    humanURL: https://sketchfab.com/developers/oauth
+    properties:
+      - url: https://sketchfab.com/developers/oauth
+        type: Documentation
+      - url: openapi/sketchfab-oauth-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      OAuth 2.0 authorization server for the Sketchfab platform. Supports Authorization Code, Implicit, and Resource
+      Owner Password Credentials grant types plus refresh-token rotation. Authorize endpoint at /oauth2/authorize/ and
+      token endpoint at /oauth2/token/. Access tokens expire after one month.
+name: Sketchfab
+tags:
   - 3D
   - Models
   - Marketplace
-  - Content
-  humanURL: https://sketchfab.com/developers/data-api
-  baseURL: https://api.sketchfab.com
-  properties:
-  - url: https://sketchfab.com/developers/data-api
-    type: Documentation
-  - url: https://docs.sketchfab.com/data-api/v3/index.html
-    type: Documentation
-    name: Sketchfab Data API v3 Reference
-  - url: openapi/sketchfab-data-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/sketchfab-model-schema.json
-    type: JSONSchema
-  - url: json-ld/sketchfab-context.jsonld
-    type: JSONLD
-  - type: NaftikoCapability
-    url: capabilities/data-models.yaml
-  - type: NaftikoCapability
-    url: capabilities/data-users.yaml
-  - type: NaftikoCapability
-    url: capabilities/data-collections.yaml
-  - type: NaftikoCapability
-    url: capabilities/data-search.yaml
-  description: REST API for reading and writing Sketchfab data. Upload, list, update, and
-    delete 3D models; manage collections, comments, likes, and bookmarks; search the
-    public model catalog; and manage user, organization, and project resources. Supports
-    OAuth 2.0 and personal API token authentication. Base URL is https://api.sketchfab.com
-    with version 3 endpoints under /v3/.
-- aid: sketchfab:sketchfab-viewer-api
-  name: Sketchfab Viewer API
-  tags:
-  - 3D
   - Viewer
-  - JavaScript
   - WebGL
-  - Embed
-  humanURL: https://sketchfab.com/developers/viewer
-  properties:
-  - url: https://sketchfab.com/developers/viewer
-    type: Documentation
-  - url: https://sketchfab.com/developers/viewer/functions
-    type: Documentation
-    name: Viewer API Functions Reference
-  - url: https://sketchfab.com/developers/viewer/initialization
-    type: Documentation
-    name: Viewer API Initialization
-  - url: https://github.com/sketchfab/viewer-api
-    type: SourceCode
-    name: Viewer API GitHub
-  - url: https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js
-    type: SDK
-    name: Sketchfab Viewer JavaScript SDK
-  description: Client-side JavaScript library for controlling an embedded Sketchfab 3D
-    viewer. Exposes camera control, screenshot capture, annotation, material and texture
-    manipulation, post-processing filters, animation playback, and an event stream
-    (viewerready, click, annotationSelect, animationPlay, etc.). Distributed as a
-    browser-loadable script from static.sketchfab.com and published on npm.
-- aid: sketchfab:sketchfab-download-api
-  name: Sketchfab Download API
-  tags:
-  - 3D
-  - Models
-  - Download
   - glTF
-  - USDZ
-  humanURL: https://sketchfab.com/developers/download-api
-  properties:
-  - url: https://sketchfab.com/developers/download-api
-    type: Documentation
-  - url: openapi/sketchfab-download-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/download-models.yaml
-  description: Programmatic download of 3D models from Sketchfab's library in glTF,
-    GLB, and USDZ formats. Requires end-user OAuth authentication. Source formats
-    (FBX, OBJ, etc.) are not exposed through the public API; application-level
-    download access without user authentication requires a contract with Sketchfab.
-- aid: sketchfab:sketchfab-oembed-api
-  name: Sketchfab oEmbed API
-  tags:
-  - 3D
-  - Embed
-  - oEmbed
-  - Models
-  humanURL: https://sketchfab.com/developers/oembed
-  properties:
-  - url: https://sketchfab.com/developers/oembed
-    type: Documentation
-  - url: openapi/sketchfab-oembed-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/oembed.yaml
-  description: oEmbed-protocol endpoint at https://sketchfab.com/oembed that returns
-    JSON containing an HTML <iframe> snippet for any Sketchfab model or playlist URL.
-    Supports maxwidth and maxheight parameters; always returns a 16:9 viewer.
-- aid: sketchfab:sketchfab-oauth-api
-  name: Sketchfab OAuth 2.0 API
-  tags:
-  - OAuth
-  - Authentication
-  - Authorization
-  humanURL: https://sketchfab.com/developers/oauth
-  properties:
-  - url: https://sketchfab.com/developers/oauth
-    type: Documentation
-  - url: openapi/sketchfab-oauth-api-openapi.yml
-    type: OpenAPI
-  description: OAuth 2.0 authorization server for the Sketchfab platform. Supports
-    Authorization Code, Implicit, and Resource Owner Password Credentials grant types
-    plus refresh-token rotation. Authorize endpoint at /oauth2/authorize/ and token
-    endpoint at /oauth2/token/. Access tokens expire after one month.
-name: Sketchfab
-tags:
-- 3D
-- Models
-- Marketplace
-- Viewer
-- WebGL
-- glTF
-- AR
-- VR
-- Creative
-- Epic Games
+  - AR
+  - VR
+  - Creative
+  - Epic Games
 kind: contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
-- type: Portal
-  url: https://sketchfab.com
-- type: Portal
-  url: https://sketchfab.com/developers
-  name: Sketchfab Developers
-- type: Documentation
-  url: https://sketchfab.com/developers/data-api
-- type: Documentation
-  url: https://docs.sketchfab.com/data-api/v3/index.html
-  name: Data API v3 Swagger Reference
-- type: Documentation
-  url: https://sketchfab.com/developers/viewer
-- type: Documentation
-  url: https://sketchfab.com/developers/download-api
-- type: Documentation
-  url: https://sketchfab.com/developers/oembed
-- type: Documentation
-  url: https://sketchfab.com/developers/oauth
-- type: Documentation
-  url: https://sketchfab.com/developers/guidelines
-  name: Sketchfab Developer Guidelines
-- type: GettingStarted
-  url: https://sketchfab.com/developers
-- type: SignUp
-  url: https://sketchfab.com/signup
-- type: Login
-  url: https://sketchfab.com/login
-- type: TermsOfService
-  url: https://sketchfab.com/terms
-- type: TermsOfService
-  url: https://sketchfab.com/developers/terms
-  name: Sketchfab Developer Terms of Use
-- type: PrivacyPolicy
-  url: https://sketchfab.com/privacy
-- type: Pricing
-  url: https://sketchfab.com/plans
-- type: Plans
-  url: plans/sketchfab-plans-pricing.yml
-- type: RateLimits
-  url: rate-limits/sketchfab-rate-limits.yml
-- type: FinOps
-  url: finops/sketchfab-finops.yml
-- type: Blog
-  url: https://sketchfab.com/blogs/community
-- type: Forum
-  url: https://forum.sketchfab.com/
-- type: Support
-  url: https://support.fab.com/s/?ProductOrigin=Sketchfab
-  name: Fab Support (Sketchfab)
-- type: Labs
-  url: https://labs.sketchfab.com/
-  name: Sketchfab Labs
-- type: GitHubOrganization
-  url: https://github.com/sketchfab
-- type: SDK
-  url: https://github.com/sketchfab/viewer-api
-  name: Viewer API JavaScript SDK
-- type: SDK
-  url: https://www.npmjs.com/package/sketchfab-viewer
-  name: Viewer API npm package
-- type: SDK
-  url: https://github.com/sketchfab/sketchfab-oauth2
-  name: Sketchfab OAuth2 JavaScript SDK
-- type: SDK
-  url: https://github.com/sketchfab/node-sketchfab
-  name: NodeJS API client
-- type: Plugin
-  url: https://github.com/sketchfab/blender-plugin
-  name: Blender plugin
-- type: Plugin
-  url: https://github.com/sketchfab/unity-plugin
-  name: Unity plugin
-- type: Plugin
-  url: https://github.com/sketchfab/unreal-plugin
-  name: Unreal Engine plugin
-- type: Plugin
-  url: https://github.com/sketchfab/godot-plugin
-  name: Godot plugin
-- type: Plugin
-  url: https://github.com/sketchfab/c4d-plugin
-  name: Cinema 4D plugin
-- type: Plugin
-  url: https://github.com/sketchfab/maya-exporter
-  name: Autodesk Maya exporter
-- type: Plugin
-  url: https://github.com/sketchfab/modo-exporter
-  name: Modo exporter
-- type: Plugin
-  url: https://github.com/sketchfab/3dsmax-exporter
-  name: 3ds Max exporter
-- type: Plugin
-  url: https://github.com/sketchfab/lightwave-exporter
-  name: Lightwave exporter
-- type: Plugin
-  url: https://github.com/sketchfab/wordpress-plugin
-  name: WordPress plugin
-- type: Plugin
-  url: https://github.com/sketchfab/ckeditor-plugin
-  name: CKEditor plugin
-- type: Plugin
-  url: https://github.com/sketchfab/phpbb-plugin
-  name: phpBB plugin
-- type: CodeExamples
-  url: https://github.com/sketchfab/experiments
-  name: Sketchfab Viewer experiments
-- type: CodeExamples
-  url: https://labs.sketchfab.com/experiments/configurator/
-  name: Model configurator (chair)
-- type: CodeExamples
-  url: https://github.com/sketchfab/configurator-framework
-  name: Configurator framework
-- type: Tool
-  url: https://github.com/sketchfab/UnityGLTF
-  name: UnityGLTF runtime loader
-- type: Tool
-  url: https://github.com/sketchfab/Unity-glTF-Exporter
-  name: Unity glTF exporter
-- type: Acquirer
-  url: https://www.epicgames.com/site/en-US/news/sketchfab-is-joining-epic-games
-  name: Epic Games acquisition announcement (July 21, 2021)
-- type: SuccessorPlatform
-  url: https://www.fab.com
-  name: Fab — Epic's unified content marketplace
-- type: LinkedIn
-  url: https://www.linkedin.com/company/sketchfab/
-- type: Twitter
-  url: https://twitter.com/Sketchfab
-- type: YouTube
-  url: https://www.youtube.com/user/Sketchfab
-- type: Features
-  data:
-  - REST Data API v3 at https://api.sketchfab.com/v3/ — models, users, collections, comments, likes, bookmarks, search, organizations, projects
-  - OAuth 2.0 with Authorization Code, Implicit, and Password grants plus refresh-token rotation; bearer access tokens expire after one month
-  - Personal API tokens for server-to-server access (issued from account settings)
-  - JavaScript Viewer API for embedded 3D viewer control — camera, materials, textures, annotations, animation, post-processing, screenshot capture, event stream
-  - Download API exposing glTF, GLB, and USDZ formats; source formats (FBX, OBJ) reserved for direct contracts
-  - oEmbed endpoint at /oembed for one-call iframe embedding (16:9 viewer aspect)
-  - Public model search covering Sketchfab's library of millions of 3D models, much of it Creative Commons licensed
-  - Native plugins / exporters for Blender, Unity, Unreal, Godot, Cinema 4D, Maya, Modo, 3ds Max, Lightwave, ZBrush, SketchUp, KSP, Minecraft (Mineways)
-  - WordPress, CKEditor, phpBB, NodeBB, and Vanilla Forums content plugins for embedding models in CMS and forum platforms
-  - VR / AR / WebXR-ready viewer with USDZ Quick Look support for iOS Safari
-  - Labs experiments (annotations sync, configurator, watch configurator, screenshot generator, viewer sharing)
-  - Configurator framework for building product configurators on the Sketchfab viewer
-  - Owned by Epic Games since July 21, 2021; commerce surface migrating to Fab.com (Epic's unified marketplace launched 2024)
-  - Free, Plus, Premium, Premium Pro, and Enterprise plans for creators; separate Store buyer surface
-  sources:
-  - https://sketchfab.com/developers
-  - https://sketchfab.com/developers/data-api
-  - https://docs.sketchfab.com/data-api/v3/index.html
-  - https://sketchfab.com/developers/viewer
-  - https://sketchfab.com/developers/download-api
-  - https://sketchfab.com/developers/oembed
-  - https://sketchfab.com/developers/oauth
-  - https://github.com/sketchfab
-  - https://en.wikipedia.org/wiki/Sketchfab
-  updated: '2026-05-25'
+  - type: Portal
+    url: https://sketchfab.com
+  - type: Portal
+    url: https://sketchfab.com/developers
+    name: Sketchfab Developers
+  - type: Documentation
+    url: https://sketchfab.com/developers/data-api
+  - type: Documentation
+    url: https://docs.sketchfab.com/data-api/v3/index.html
+    name: Data API v3 Swagger Reference
+  - type: Documentation
+    url: https://sketchfab.com/developers/viewer
+  - type: Documentation
+    url: https://sketchfab.com/developers/download-api
+  - type: Documentation
+    url: https://sketchfab.com/developers/oembed
+  - type: Documentation
+    url: https://sketchfab.com/developers/oauth
+  - type: Documentation
+    url: https://sketchfab.com/developers/guidelines
+    name: Sketchfab Developer Guidelines
+  - type: GettingStarted
+    url: https://sketchfab.com/developers
+  - type: SignUp
+    url: https://sketchfab.com/signup
+  - type: Login
+    url: https://sketchfab.com/login
+  - type: TermsOfService
+    url: https://sketchfab.com/terms
+  - type: TermsOfService
+    url: https://sketchfab.com/developers/terms
+    name: Sketchfab Developer Terms of Use
+  - type: PrivacyPolicy
+    url: https://sketchfab.com/privacy
+  - type: Pricing
+    url: https://sketchfab.com/plans
+  - type: Plans
+    url: plans/sketchfab-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/sketchfab-rate-limits.yml
+  - type: FinOps
+    url: finops/sketchfab-finops.yml
+  - type: Blog
+    url: https://sketchfab.com/blogs/community
+  - type: Forum
+    url: https://forum.sketchfab.com/
+  - type: Support
+    url: https://support.fab.com/s/?ProductOrigin=Sketchfab
+    name: Fab Support (Sketchfab)
+  - type: Labs
+    url: https://labs.sketchfab.com/
+    name: Sketchfab Labs
+  - type: GitHubOrganization
+    url: https://github.com/sketchfab
+  - type: SDK
+    url: https://github.com/sketchfab/viewer-api
+    name: Viewer API JavaScript SDK
+  - type: SDK
+    url: https://www.npmjs.com/package/sketchfab-viewer
+    name: Viewer API npm package
+  - type: SDK
+    url: https://github.com/sketchfab/sketchfab-oauth2
+    name: Sketchfab OAuth2 JavaScript SDK
+  - type: SDK
+    url: https://github.com/sketchfab/node-sketchfab
+    name: NodeJS API client
+  - type: Plugin
+    url: https://github.com/sketchfab/blender-plugin
+    name: Blender plugin
+  - type: Plugin
+    url: https://github.com/sketchfab/unity-plugin
+    name: Unity plugin
+  - type: Plugin
+    url: https://github.com/sketchfab/unreal-plugin
+    name: Unreal Engine plugin
+  - type: Plugin
+    url: https://github.com/sketchfab/godot-plugin
+    name: Godot plugin
+  - type: Plugin
+    url: https://github.com/sketchfab/c4d-plugin
+    name: Cinema 4D plugin
+  - type: Plugin
+    url: https://github.com/sketchfab/maya-exporter
+    name: Autodesk Maya exporter
+  - type: Plugin
+    url: https://github.com/sketchfab/modo-exporter
+    name: Modo exporter
+  - type: Plugin
+    url: https://github.com/sketchfab/3dsmax-exporter
+    name: 3ds Max exporter
+  - type: Plugin
+    url: https://github.com/sketchfab/lightwave-exporter
+    name: Lightwave exporter
+  - type: Plugin
+    url: https://github.com/sketchfab/wordpress-plugin
+    name: WordPress plugin
+  - type: Plugin
+    url: https://github.com/sketchfab/ckeditor-plugin
+    name: CKEditor plugin
+  - type: Plugin
+    url: https://github.com/sketchfab/phpbb-plugin
+    name: phpBB plugin
+  - type: CodeExamples
+    url: https://github.com/sketchfab/experiments
+    name: Sketchfab Viewer experiments
+  - type: CodeExamples
+    url: https://labs.sketchfab.com/experiments/configurator/
+    name: Model configurator (chair)
+  - type: CodeExamples
+    url: https://github.com/sketchfab/configurator-framework
+    name: Configurator framework
+  - type: Tool
+    url: https://github.com/sketchfab/UnityGLTF
+    name: UnityGLTF runtime loader
+  - type: Tool
+    url: https://github.com/sketchfab/Unity-glTF-Exporter
+    name: Unity glTF exporter
+  - type: Acquirer
+    url: https://www.epicgames.com/site/en-US/news/sketchfab-is-joining-epic-games
+    name: Epic Games acquisition announcement (July 21, 2021)
+  - type: SuccessorPlatform
+    url: https://www.fab.com
+    name: Fab — Epic's unified content marketplace
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/sketchfab/
+  - type: Twitter
+    url: https://twitter.com/Sketchfab
+  - type: YouTube
+    url: https://www.youtube.com/user/Sketchfab
+  - type: Features
+    data:
+      - >-
+        REST Data API v3 at https://api.sketchfab.com/v3/ — models, users, collections, comments, likes, bookmarks,
+        search, organizations, projects
+      - >-
+        OAuth 2.0 with Authorization Code, Implicit, and Password grants plus refresh-token rotation; bearer access
+        tokens expire after one month
+      - Personal API tokens for server-to-server access (issued from account settings)
+      - >-
+        JavaScript Viewer API for embedded 3D viewer control — camera, materials, textures, annotations, animation,
+        post-processing, screenshot capture, event stream
+      - Download API exposing glTF, GLB, and USDZ formats; source formats (FBX, OBJ) reserved for direct contracts
+      - oEmbed endpoint at /oembed for one-call iframe embedding (16:9 viewer aspect)
+      - Public model search covering Sketchfab's library of millions of 3D models, much of it Creative Commons licensed
+      - >-
+        Native plugins / exporters for Blender, Unity, Unreal, Godot, Cinema 4D, Maya, Modo, 3ds Max, Lightwave, ZBrush,
+        SketchUp, KSP, Minecraft (Mineways)
+      - >-
+        WordPress, CKEditor, phpBB, NodeBB, and Vanilla Forums content plugins for embedding models in CMS and forum
+        platforms
+      - VR / AR / WebXR-ready viewer with USDZ Quick Look support for iOS Safari
+      - Labs experiments (annotations sync, configurator, watch configurator, screenshot generator, viewer sharing)
+      - Configurator framework for building product configurators on the Sketchfab viewer
+      - >-
+        Owned by Epic Games since July 21, 2021; commerce surface migrating to Fab.com (Epic's unified marketplace
+        launched 2024)
+      - Free, Plus, Premium, Premium Pro, and Enterprise plans for creators; separate Store buyer surface
+    sources:
+      - https://sketchfab.com/developers
+      - https://sketchfab.com/developers/data-api
+      - https://docs.sketchfab.com/data-api/v3/index.html
+      - https://sketchfab.com/developers/viewer
+      - https://sketchfab.com/developers/download-api
+      - https://sketchfab.com/developers/oembed
+      - https://sketchfab.com/developers/oauth
+      - https://github.com/sketchfab
+      - https://en.wikipedia.org/wiki/Sketchfab
+    updated: '2026-05-25'
 created: '2026-05-25'
 modified: '2026-05-25'
 position: Consuming
-description: Sketchfab is the largest dedicated platform for publishing, sharing, discovering,
-  buying, and embedding interactive 3D content on the web. Founded in Paris in 2012 by
-  Cedric Pinson and Alban Denoyel and acquired by Epic Games on July 21, 2021, Sketchfab
-  hosts millions of 3D models from artists, museums, scanning rigs, and studios — much
-  of it Creative Commons licensed. The platform exposes a public REST Data API for
-  programmatic upload and content management, a JavaScript Viewer API for controlling
-  the embedded WebGL/WebXR viewer, a Download API delivering glTF/GLB/USDZ, an oEmbed
-  endpoint, and OAuth 2.0 authentication, alongside native exporters for every major
-  3D / DCC tool. Following the Fab.com launch in 2024 the Sketchfab Store has been
-  retired into Epic's unified content marketplace while the publishing, viewing, and
-  developer APIs remain on sketchfab.com.
+description: >-
+  Sketchfab is the largest dedicated platform for publishing, sharing, discovering, buying, and embedding interactive 3D
+  content on the web. Founded in Paris in 2012 by Cedric Pinson and Alban Denoyel and acquired by Epic Games on July 21,
+  2021, Sketchfab hosts millions of 3D models from artists, museums, scanning rigs, and studios — much of it Creative
+  Commons licensed. The platform exposes a public REST Data API for programmatic upload and content management, a
+  JavaScript Viewer API for controlling the embedded WebGL/WebXR viewer, a Download API delivering glTF/GLB/USDZ, an
+  oEmbed endpoint, and OAuth 2.0 authentication, alongside native exporters for every major 3D / DCC tool. Following the
+  Fab.com launch in 2024 the Sketchfab Store has been retired into Epic's unified content marketplace while the
+  publishing, viewing, and developer APIs remain on sketchfab.com.
 maintainers:
-- FN: Kin Lane
-  email: info@apievangelist.com
-  X: apievangelist
-  url: https://apievangelist.com
+  - FN: Kin Lane
+    email: info@apievangelist.com
+    X: apievangelist
+    url: https://apievangelist.com
 specificationVersion: '0.16'

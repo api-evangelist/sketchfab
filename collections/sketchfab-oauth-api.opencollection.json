@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sketchfab OAuth 2.0 API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OAuth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "OAuth Authorize Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sketchfab.com/oauth2/authorize/",
+            "params": [
+              {
+                "name": "response_type",
+                "value": "",
+                "type": "query",
+                "description": "`code` (Authorization Code) or `token` (Implicit)."
+              },
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "redirect_uri",
+                "value": "",
+                "type": "query",
+                "description": "Redirect URI registered with the OAuth application."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Recommended CSRF / replay protection nonce."
+              },
+              {
+                "name": "approval_prompt",
+                "value": "",
+                "type": "query",
+                "description": "Set to `force` to always re-prompt the user for consent."
+              }
+            ]
+          },
+          "docs": "Initiate the Authorization Code or Implicit flow. The end user is presented with the Sketchfab consent screen and on approval the browser is redirected back to the registered redirect_uri with either a `code` query parameter or an `access_token` URL fragment."
+        },
+        {
+          "info": {
+            "name": "OAuth Token Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sketchfab.com/oauth2/token/",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "client_secret",
+                  "value": ""
+                },
+                {
+                  "name": "code",
+                  "value": ""
+                },
+                {
+                  "name": "redirect_uri",
+                  "value": ""
+                },
+                {
+                  "name": "refresh_token",
+                  "value": ""
+                },
+                {
+                  "name": "username",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Exchange an authorization code for tokens, refresh an access token, or perform a password grant. Requires Content-Type `application/x-www-form-urlencoded`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

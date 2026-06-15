@@ -1,0 +1,190 @@
+{
+  "item": [
+    {
+      "id": "15cdf12c-40bc-4e26-822c-e6719ca059fa",
+      "name": "oEmbed",
+      "description": {
+        "content": "oEmbed-protocol embed endpoint.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "095f4bb8-9499-4372-9732-b988cc621349",
+          "name": "Retrieve oEmbed Response",
+          "request": {
+            "name": "Retrieve oEmbed Response",
+            "description": {
+              "content": "Resolve a Sketchfab model or playlist URL into an oEmbed JSON response carrying an iframe embed snippet.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "oembed"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<uri>",
+                  "description": "(Required) The full Sketchfab model or playlist URL."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxwidth",
+                  "value": "<integer>",
+                  "description": "Maximum width of the returned viewer in pixels (the aspect ratio is always 16:9)."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxheight",
+                  "value": "<integer>",
+                  "description": "Maximum height of the returned viewer in pixels (the aspect ratio is always 16:9)."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. Only `json` is supported."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8236223c-6c96-4fec-8495-67cabf099f91",
+              "name": "oEmbed response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "oembed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "maxwidth",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "maxheight",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"rich\",\n  \"version\": \"1.0\",\n  \"provider_name\": \"Sketchfab\",\n  \"provider_url\": \"https://sketchfab.com\",\n  \"title\": \"string\",\n  \"author_name\": \"string\",\n  \"author_url\": \"http://QukgRKcU.kyyuasjSpOXoAU0Jj7aAKr2jAFhtoXfFZWBGyCoiFfFm7e8sa,EpiIaksf\",\n  \"html\": \"string\",\n  \"width\": 7430,\n  \"height\": 6747,\n  \"thumbnail_url\": \"https://vsHwLeKVNlKIxA.evdgrQO0THBq1bUpfLV6Hz+TfPl1OaTV3UUR\",\n  \"thumbnail_width\": 6819,\n  \"thumbnail_height\": 4615\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6025df2f-4595-463c-ac32-5fbf4cd395c1",
+              "name": "URL is not a recognised Sketchfab resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "oembed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "maxwidth",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "maxheight",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sketchfab.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "113654cf-ae38-4574-8625-a232e810986a",
+    "name": "Sketchfab oEmbed API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sketchfab oEmbed endpoint follows the oEmbed protocol (https://oembed.com/). Given a Sketchfab model or playlist URL it returns a JSON response containing an HTML `<iframe>` snippet that embeds the Sketchfab viewer. The returned viewer always uses a 16:9 aspect ratio regardless of the maxwidth and maxheight parameters.\n\n\nContact Support:\n Name: Sketchfab Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
