@@ -49,7 +49,7 @@ apis:
         type: SourceCode
         name: Viewer API GitHub
       - url: https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js
-        type: SDK
+        type: SDKs
         name: Sketchfab Viewer JavaScript SDK
     description: >-
       Client-side JavaScript library for controlling an embedded Sketchfab 3D viewer. Exposes camera control, screenshot
@@ -145,7 +145,7 @@ common:
     name: Sketchfab Developer Guidelines
   - type: GettingStarted
     url: https://sketchfab.com/developers
-  - type: SignUp
+  - type: Signup
     url: https://sketchfab.com/signup
   - type: Login
     url: https://sketchfab.com/login
@@ -166,7 +166,7 @@ common:
     url: finops/sketchfab-finops.yml
   - type: Blog
     url: https://sketchfab.com/blogs/community
-  - type: Forum
+  - type: Forums
     url: https://forum.sketchfab.com/
   - type: Support
     url: https://support.fab.com/s/?ProductOrigin=Sketchfab
@@ -176,16 +176,16 @@ common:
     name: Sketchfab Labs
   - type: GitHubOrganization
     url: https://github.com/sketchfab
-  - type: SDK
+  - type: SDKs
     url: https://github.com/sketchfab/viewer-api
     name: Viewer API JavaScript SDK
-  - type: SDK
+  - type: SDKs
     url: https://www.npmjs.com/package/sketchfab-viewer
     name: Viewer API npm package
-  - type: SDK
+  - type: SDKs
     url: https://github.com/sketchfab/sketchfab-oauth2
     name: Sketchfab OAuth2 JavaScript SDK
-  - type: SDK
+  - type: SDKs
     url: https://github.com/sketchfab/node-sketchfab
     name: NodeJS API client
   - type: Plugin
@@ -233,10 +233,10 @@ common:
   - type: CodeExamples
     url: https://github.com/sketchfab/configurator-framework
     name: Configurator framework
-  - type: Tool
+  - type: Tools
     url: https://github.com/sketchfab/UnityGLTF
     name: UnityGLTF runtime loader
-  - type: Tool
+  - type: Tools
     url: https://github.com/sketchfab/Unity-glTF-Exporter
     name: Unity glTF exporter
   - type: Acquirer
