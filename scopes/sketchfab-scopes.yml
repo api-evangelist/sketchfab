@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/sketchfab-download-api-openapi.yml
+schemes:
+- name: OAuth2
+  source: openapi/sketchfab-download-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://sketchfab.com/oauth2/authorize/
+    tokenUrl: https://sketchfab.com/oauth2/token/
+scopes:
+- scope: read
+  description: Read access including model downloads.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/sketchfab-download-api-openapi.yml
