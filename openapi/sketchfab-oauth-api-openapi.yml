@@ -1,12 +1,10 @@
 openapi: 3.1.0
 info:
-  title: Sketchfab OAuth 2.0 API
-  description: >
-    Sketchfab OAuth 2.0 authorization server. Supports the Authorization Code,
-    Implicit, and Resource Owner Password Credentials grant types plus refresh
-    token rotation. Access tokens are valid for one month; the Implicit flow
-    does not issue refresh tokens.
-  version: '2.0'
+  title: Sketchfab Download OAuth API
+  description: 'Programmatic download of downloadable Sketchfab models in glTF, GLB, and USDZ formats. The endpoint returns short-lived signed URLs for each available format. The caller must be authenticated on behalf of an end user (OAuth Authorization Code or Implicit flow); application-level downloads without user authentication require a direct contract with Sketchfab. Source formats (FBX, OBJ) are not exposed.
+
+    '
+  version: v3
   contact:
     name: Sketchfab Developer Support
     url: https://support.fab.com/s/?ProductOrigin=Sketchfab
@@ -14,11 +12,13 @@ info:
     name: Sketchfab Developer Terms of Use
     url: https://sketchfab.com/developers/terms
 servers:
-  - url: https://sketchfab.com
-    description: Production
+- url: https://api.sketchfab.com
+  description: Production API
+security:
+- OAuth2: []
 tags:
-  - name: OAuth
-    description: OAuth 2.0 authorization and token endpoints.
+- name: OAuth
+  description: OAuth 2.0 authorization and token endpoints.
 paths:
   /oauth2/authorize/:
     get:
@@ -26,39 +26,39 @@ paths:
       description: Initiate the Authorization Code or Implicit flow. The end user is presented with the Sketchfab consent screen and on approval the browser is redirected back to the registered redirect_uri with either a `code` query parameter or an `access_token` URL fragment.
       operationId: oauthAuthorize
       tags:
-        - OAuth
+      - OAuth
       parameters:
-        - name: response_type
-          in: query
-          required: true
-          description: '`code` (Authorization Code) or `token` (Implicit).'
-          schema:
-            type: string
-            enum:
-              - code
-              - token
-        - name: client_id
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: redirect_uri
-          in: query
-          required: false
-          description: Redirect URI registered with the OAuth application.
-          schema:
-            type: string
-            format: uri
-        - name: state
-          in: query
-          description: Recommended CSRF / replay protection nonce.
-          schema:
-            type: string
-        - name: approval_prompt
-          in: query
-          description: Set to `force` to always re-prompt the user for consent.
-          schema:
-            type: string
+      - name: response_type
+        in: query
+        required: true
+        description: '`code` (Authorization Code) or `token` (Implicit).'
+        schema:
+          type: string
+          enum:
+          - code
+          - token
+      - name: client_id
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: redirect_uri
+        in: query
+        required: false
+        description: Redirect URI registered with the OAuth application.
+        schema:
+          type: string
+          format: uri
+      - name: state
+        in: query
+        description: Recommended CSRF / replay protection nonce.
+        schema:
+          type: string
+      - name: approval_prompt
+        in: query
+        description: Set to `force` to always re-prompt the user for consent.
+        schema:
+          type: string
       responses:
         '302':
           description: Redirect to the application's redirect_uri carrying `code` or `access_token`.
@@ -68,7 +68,7 @@ paths:
       description: Exchange an authorization code for tokens, refresh an access token, or perform a password grant. Requires Content-Type `application/x-www-form-urlencoded`.
       operationId: oauthToken
       tags:
-        - OAuth
+      - OAuth
       requestBody:
         required: true
         content:
@@ -76,16 +76,16 @@ paths:
             schema:
               type: object
               required:
-                - grant_type
-                - client_id
-                - client_secret
+              - grant_type
+              - client_id
+              - client_secret
               properties:
                 grant_type:
                   type: string
                   enum:
-                    - authorization_code
-                    - refresh_token
-                    - password
+                  - authorization_code
+                  - refresh_token
+                  - password
                 client_id:
                   type: string
                 client_secret:
@@ -132,3 +132,13 @@ components:
           description: Issued for Authorization Code and Password grants only.
         scope:
           type: string
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sketchfab.com/oauth2/authorize/
+          tokenUrl: https://sketchfab.com/oauth2/token/
+          refreshUrl: https://sketchfab.com/oauth2/token/
+          scopes:
+            read: Read access including model downloads.

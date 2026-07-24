@@ -1,13 +1,10 @@
 openapi: 3.1.0
 info:
-  title: Sketchfab oEmbed API
-  description: >
-    The Sketchfab oEmbed endpoint follows the oEmbed protocol
-    (https://oembed.com/). Given a Sketchfab model or playlist URL it returns
-    a JSON response containing an HTML `<iframe>` snippet that embeds the
-    Sketchfab viewer. The returned viewer always uses a 16:9 aspect ratio
-    regardless of the maxwidth and maxheight parameters.
-  version: '1.0'
+  title: Sketchfab Download oEmbed API
+  description: 'Programmatic download of downloadable Sketchfab models in glTF, GLB, and USDZ formats. The endpoint returns short-lived signed URLs for each available format. The caller must be authenticated on behalf of an end user (OAuth Authorization Code or Implicit flow); application-level downloads without user authentication require a direct contract with Sketchfab. Source formats (FBX, OBJ) are not exposed.
+
+    '
+  version: v3
   contact:
     name: Sketchfab Developer Support
     url: https://support.fab.com/s/?ProductOrigin=Sketchfab
@@ -15,11 +12,13 @@ info:
     name: Sketchfab Developer Terms of Use
     url: https://sketchfab.com/developers/terms
 servers:
-  - url: https://sketchfab.com
-    description: Production
+- url: https://api.sketchfab.com
+  description: Production API
+security:
+- OAuth2: []
 tags:
-  - name: oEmbed
-    description: oEmbed-protocol embed endpoint.
+- name: oEmbed
+  description: oEmbed-protocol embed endpoint.
 paths:
   /oembed:
     get:
@@ -27,33 +26,33 @@ paths:
       description: Resolve a Sketchfab model or playlist URL into an oEmbed JSON response carrying an iframe embed snippet.
       operationId: getOEmbed
       tags:
-        - oEmbed
+      - oEmbed
       parameters:
-        - name: url
-          in: query
-          required: true
-          description: The full Sketchfab model or playlist URL.
-          schema:
-            type: string
-            format: uri
-        - name: maxwidth
-          in: query
-          description: Maximum width of the returned viewer in pixels (the aspect ratio is always 16:9).
-          schema:
-            type: integer
-        - name: maxheight
-          in: query
-          description: Maximum height of the returned viewer in pixels (the aspect ratio is always 16:9).
-          schema:
-            type: integer
-        - name: format
-          in: query
-          description: Response format. Only `json` is supported.
-          schema:
-            type: string
-            default: json
-            enum:
-              - json
+      - name: url
+        in: query
+        required: true
+        description: The full Sketchfab model or playlist URL.
+        schema:
+          type: string
+          format: uri
+      - name: maxwidth
+        in: query
+        description: Maximum width of the returned viewer in pixels (the aspect ratio is always 16:9).
+        schema:
+          type: integer
+      - name: maxheight
+        in: query
+        description: Maximum height of the returned viewer in pixels (the aspect ratio is always 16:9).
+        schema:
+          type: integer
+      - name: format
+        in: query
+        description: Response format. Only `json` is supported.
+        schema:
+          type: string
+          default: json
+          enum:
+          - json
       responses:
         '200':
           description: oEmbed response.
@@ -102,3 +101,13 @@ components:
           type: integer
         thumbnail_height:
           type: integer
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sketchfab.com/oauth2/authorize/
+          tokenUrl: https://sketchfab.com/oauth2/token/
+          refreshUrl: https://sketchfab.com/oauth2/token/
+          scopes:
+            read: Read access including model downloads.
