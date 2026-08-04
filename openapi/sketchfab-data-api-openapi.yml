@@ -495,7 +495,7 @@ components:
       type: apiKey
       in: header
       name: Authorization
-      description: Personal API token sent as `Authorization: Token <token>`.
+      description: "Personal API token sent as `Authorization: Token <token>`."
   parameters:
     ModelUid:
       name: uid

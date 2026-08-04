@@ -1,0 +1,20 @@
+{
+  "provider": "sketchfab",
+  "sources": [
+    "sketchfab-download-api-openapi.yml",
+    "sketchfab-oauth-api-openapi.yml",
+    "sketchfab-oembed-api-openapi.yml"
+  ],
+  "outputs": [
+    "sketchfab-download-api-openapi.yml",
+    "sketchfab-oauth-api-openapi.yml",
+    "sketchfab-oembed-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": [
+    "sketchfab-data-api-openapi.yml: parse error ScannerError: mapping values are not allowed here"
+  ]
+}

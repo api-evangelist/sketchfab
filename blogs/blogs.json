@@ -5,10 +5,11 @@
       "source": "https://sketchfab.com/blogs/community",
       "feed_url": "https://sketchfab.com/blogs/community/feed/",
       "title": "Sketchfab Community Blog",
-      "saved": 10,
-      "method": "feed"
+      "saved": 0,
+      "method": "feed",
+      "error": "parse_failed"
     }
   ],
   "post_count": 10,
-  "fetched": "2026-07-11T11:43:46Z"
+  "fetched": "2026-08-01T15:38:58Z"
 }
