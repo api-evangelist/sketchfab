@@ -1,111 +1,266 @@
 aid: sketchfab
 url: https://raw.githubusercontent.com/api-evangelist/sketchfab/refs/heads/main/apis.yml
 apis:
-  - aid: sketchfab:sketchfab-data-api
-    name: Sketchfab Data API
-    tags:
-      - 3D
-      - Models
-      - Marketplace
-      - Content
-    humanURL: https://sketchfab.com/developers/data-api
-    baseURL: https://api.sketchfab.com
-    properties:
-      - url: https://sketchfab.com/developers/data-api
-        type: Documentation
-      - url: https://docs.sketchfab.com/data-api/v3/index.html
-        type: Documentation
-        name: Sketchfab Data API v3 Reference
-      - url: openapi/sketchfab-data-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/sketchfab-model-schema.json
-        type: JSONSchema
-      - url: json-ld/sketchfab-context.jsonld
-        type: JSONLD
-    description: >-
-      REST API for reading and writing Sketchfab data. Upload, list, update, and delete 3D models; manage collections,
-      comments, likes, and bookmarks; search the public model catalog; and manage user, organization, and project
-      resources. Supports OAuth 2.0 and personal API token authentication. Base URL is https://api.sketchfab.com with
-      version 3 endpoints under /v3/.
-  - aid: sketchfab:sketchfab-viewer-api
-    name: Sketchfab Viewer API
-    tags:
-      - 3D
-      - Viewer
-      - JavaScript
-      - WebGL
-      - Embed
-    humanURL: https://sketchfab.com/developers/viewer
-    properties:
-      - url: https://sketchfab.com/developers/viewer
-        type: Documentation
-      - url: https://sketchfab.com/developers/viewer/functions
-        type: Documentation
-        name: Viewer API Functions Reference
-      - url: https://sketchfab.com/developers/viewer/initialization
-        type: Documentation
-        name: Viewer API Initialization
-      - url: https://github.com/sketchfab/viewer-api
-        type: SourceCode
-        name: Viewer API GitHub
-      - url: https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js
-        type: SDKs
-        name: Sketchfab Viewer JavaScript SDK
-    description: >-
-      Client-side JavaScript library for controlling an embedded Sketchfab 3D viewer. Exposes camera control, screenshot
-      capture, annotation, material and texture manipulation, post-processing filters, animation playback, and an event
-      stream (viewerready, click, annotationSelect, animationPlay, etc.). Distributed as a browser-loadable script from
-      static.sketchfab.com and published on npm.
-  - aid: sketchfab:sketchfab-download-api
-    name: Sketchfab Download API
-    tags:
-      - 3D
-      - Models
-      - Download
-      - glTF
-      - USDZ
-    humanURL: https://sketchfab.com/developers/download-api
-    properties:
-      - url: https://sketchfab.com/developers/download-api
-        type: Documentation
-      - url: openapi/sketchfab-download-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Programmatic download of 3D models from Sketchfab's library in glTF, GLB, and USDZ formats. Requires end-user
-      OAuth authentication. Source formats (FBX, OBJ, etc.) are not exposed through the public API; application-level
-      download access without user authentication requires a contract with Sketchfab.
-  - aid: sketchfab:sketchfab-oembed-api
-    name: Sketchfab oEmbed API
-    tags:
-      - 3D
-      - Embed
-      - oEmbed
-      - Models
-    humanURL: https://sketchfab.com/developers/oembed
-    properties:
-      - url: https://sketchfab.com/developers/oembed
-        type: Documentation
-      - url: openapi/sketchfab-oembed-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      oEmbed-protocol endpoint at https://sketchfab.com/oembed that returns JSON containing an HTML <iframe> snippet for
-      any Sketchfab model or playlist URL. Supports maxwidth and maxheight parameters; always returns a 16:9 viewer.
-  - aid: sketchfab:sketchfab-oauth-api
-    name: Sketchfab OAuth 2.0 API
-    tags:
-      - OAuth
-      - Authentication
-      - Authorization
-    humanURL: https://sketchfab.com/developers/oauth
-    properties:
-      - url: https://sketchfab.com/developers/oauth
-        type: Documentation
-      - url: openapi/sketchfab-oauth-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      OAuth 2.0 authorization server for the Sketchfab platform. Supports Authorization Code, Implicit, and Resource
-      Owner Password Credentials grant types plus refresh-token rotation. Authorize endpoint at /oauth2/authorize/ and
-      token endpoint at /oauth2/token/. Access tokens expire after one month.
+- aid: sketchfab:sketchfab-viewer-api
+  name: Sketchfab Viewer API
+  tags:
+  - 3D
+  - Viewer
+  - JavaScript
+  - WebGL
+  - Embed
+  humanURL: https://sketchfab.com/developers/viewer
+  properties:
+  - url: https://sketchfab.com/developers/viewer
+    type: Documentation
+  - url: https://sketchfab.com/developers/viewer/functions
+    type: Documentation
+    name: Viewer API Functions Reference
+  - url: https://sketchfab.com/developers/viewer/initialization
+    type: Documentation
+    name: Viewer API Initialization
+  - url: https://github.com/sketchfab/viewer-api
+    type: SourceCode
+    name: Viewer API GitHub
+  - url: https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js
+    type: SDKs
+    name: Sketchfab Viewer JavaScript SDK
+  description: >-
+    Client-side JavaScript library for controlling an embedded Sketchfab 3D viewer. Exposes camera control,
+    screenshot capture, annotation, material and texture manipulation, post-processing filters, animation
+    playback, and an event stream (viewerready, click, annotationSelect, animationPlay, etc.). Distributed
+    as a browser-loadable script from static.sketchfab.com and published on npm.
+- aid: sketchfab:sketchfab-download-api
+  name: Sketchfab Download API
+  tags:
+  - 3D
+  - Models
+  - Download
+  - glTF
+  - USDZ
+  humanURL: https://sketchfab.com/developers/download-api
+  properties:
+  - url: https://sketchfab.com/developers/download-api
+    type: Documentation
+  - url: openapi/sketchfab-download-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    Programmatic download of 3D models from Sketchfab's library in glTF, GLB, and USDZ formats. Requires
+    end-user OAuth authentication. Source formats (FBX, OBJ, etc.) are not exposed through the public
+    API; application-level download access without user authentication requires a contract with Sketchfab.
+- aid: sketchfab:sketchfab-oembed-api
+  name: Sketchfab oEmbed API
+  tags:
+  - 3D
+  - Embed
+  - oEmbed
+  - Models
+  humanURL: https://sketchfab.com/developers/oembed
+  properties:
+  - url: https://sketchfab.com/developers/oembed
+    type: Documentation
+  - url: openapi/sketchfab-oembed-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    oEmbed-protocol endpoint at https://sketchfab.com/oembed that returns JSON containing an HTML <iframe>
+    snippet for any Sketchfab model or playlist URL. Supports maxwidth and maxheight parameters; always
+    returns a 16:9 viewer.
+- aid: sketchfab:sketchfab-oauth-api
+  name: Sketchfab OAuth 2.0 API
+  tags:
+  - OAuth
+  - Authentication
+  - Authorization
+  humanURL: https://sketchfab.com/developers/oauth
+  properties:
+  - url: https://sketchfab.com/developers/oauth
+    type: Documentation
+  - url: openapi/sketchfab-oauth-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    OAuth 2.0 authorization server for the Sketchfab platform. Supports Authorization Code, Implicit,
+    and Resource Owner Password Credentials grant types plus refresh-token rotation. Authorize endpoint
+    at /oauth2/authorize/ and token endpoint at /oauth2/token/. Access tokens expire after one month.
+- aid: sketchfab:sketchfab-bookmarks-api
+  name: Sketchfab Bookmarks API
+  description: Personal bookmarks.
+  humanURL: https://sketchfab.com/developers/data-api
+  baseURL: https://api.sketchfab.com
+  tags:
+  - Bookmarks
+  properties:
+  - type: OpenAPI
+    url: openapi/sketchfab-bookmarks-api-openapi.yml
+  - type: Documentation
+    url: https://sketchfab.com/developers/data-api
+  - type: Documentation
+    url: https://docs.sketchfab.com/data-api/v3/index.html
+  - type: JSONSchema
+    url: json-schema/sketchfab-model-schema.json
+  - type: JSONLD
+    url: json-ld/sketchfab-context.jsonld
+- aid: sketchfab:sketchfab-categories-api
+  name: Sketchfab Categories API
+  description: Public Sketchfab category taxonomy.
+  humanURL: https://sketchfab.com/developers/data-api
+  baseURL: https://api.sketchfab.com
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/sketchfab-categories-api-openapi.yml
+  - type: Documentation
+    url: https://sketchfab.com/developers/data-api
+  - type: Documentation
+    url: https://docs.sketchfab.com/data-api/v3/index.html
+  - type: JSONSchema
+    url: json-schema/sketchfab-model-schema.json
+  - type: JSONLD
+    url: json-ld/sketchfab-context.jsonld
+- aid: sketchfab:sketchfab-collections-api
+  name: Sketchfab Collections API
+  description: Group models into themed collections.
+  humanURL: https://sketchfab.com/developers/data-api
+  baseURL: https://api.sketchfab.com
+  tags:
+  - Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/sketchfab-collections-api-openapi.yml
+  - type: Documentation
+    url: https://sketchfab.com/developers/data-api
+  - type: Documentation
+    url: https://docs.sketchfab.com/data-api/v3/index.html
+  - type: JSONSchema
+    url: json-schema/sketchfab-model-schema.json
+  - type: JSONLD
+    url: json-ld/sketchfab-context.jsonld
+- aid: sketchfab:sketchfab-comments-api
+  name: Sketchfab Comments API
+  description: Comments on a model.
+  humanURL: https://sketchfab.com/developers/data-api
+  baseURL: https://api.sketchfab.com
+  tags:
+  - Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/sketchfab-comments-api-openapi.yml
+  - type: Documentation
+    url: https://sketchfab.com/developers/data-api
+  - type: Documentation
+    url: https://docs.sketchfab.com/data-api/v3/index.html
+  - type: JSONSchema
+    url: json-schema/sketchfab-model-schema.json
+  - type: JSONLD
+    url: json-ld/sketchfab-context.jsonld
+- aid: sketchfab:sketchfab-likes-api
+  name: Sketchfab Likes API
+  description: Likes (favorites) on a model.
+  humanURL: https://sketchfab.com/developers/data-api
+  baseURL: https://api.sketchfab.com
+  tags:
+  - Likes
+  properties:
+  - type: OpenAPI
+    url: openapi/sketchfab-likes-api-openapi.yml
+  - type: Documentation
+    url: https://sketchfab.com/developers/data-api
+  - type: Documentation
+    url: https://docs.sketchfab.com/data-api/v3/index.html
+  - type: JSONSchema
+    url: json-schema/sketchfab-model-schema.json
+  - type: JSONLD
+    url: json-ld/sketchfab-context.jsonld
+- aid: sketchfab:sketchfab-models-api
+  name: Sketchfab Models API
+  description: Manage 3D models — upload, list, retrieve, update, delete.
+  humanURL: https://sketchfab.com/developers/data-api
+  baseURL: https://api.sketchfab.com
+  tags:
+  - Models
+  properties:
+  - type: OpenAPI
+    url: openapi/sketchfab-models-api-openapi.yml
+  - type: Documentation
+    url: https://sketchfab.com/developers/data-api
+  - type: Documentation
+    url: https://docs.sketchfab.com/data-api/v3/index.html
+  - type: JSONSchema
+    url: json-schema/sketchfab-model-schema.json
+  - type: JSONLD
+    url: json-ld/sketchfab-context.jsonld
+- aid: sketchfab:sketchfab-orgs-api
+  name: Sketchfab Orgs API
+  description: Organization, project, and member management.
+  humanURL: https://sketchfab.com/developers/data-api
+  baseURL: https://api.sketchfab.com
+  tags:
+  - Orgs
+  properties:
+  - type: OpenAPI
+    url: openapi/sketchfab-orgs-api-openapi.yml
+  - type: Documentation
+    url: https://sketchfab.com/developers/data-api
+  - type: Documentation
+    url: https://docs.sketchfab.com/data-api/v3/index.html
+  - type: JSONSchema
+    url: json-schema/sketchfab-model-schema.json
+  - type: JSONLD
+    url: json-ld/sketchfab-context.jsonld
+- aid: sketchfab:sketchfab-search-api
+  name: Sketchfab Search API
+  description: Search public Sketchfab content.
+  humanURL: https://sketchfab.com/developers/data-api
+  baseURL: https://api.sketchfab.com
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/sketchfab-search-api-openapi.yml
+  - type: Documentation
+    url: https://sketchfab.com/developers/data-api
+  - type: Documentation
+    url: https://docs.sketchfab.com/data-api/v3/index.html
+  - type: JSONSchema
+    url: json-schema/sketchfab-model-schema.json
+  - type: JSONLD
+    url: json-ld/sketchfab-context.jsonld
+- aid: sketchfab:sketchfab-tags-api
+  name: Sketchfab Tags API
+  description: Tag-based discovery.
+  humanURL: https://sketchfab.com/developers/data-api
+  baseURL: https://api.sketchfab.com
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/sketchfab-tags-api-openapi.yml
+  - type: Documentation
+    url: https://sketchfab.com/developers/data-api
+  - type: Documentation
+    url: https://docs.sketchfab.com/data-api/v3/index.html
+  - type: JSONSchema
+    url: json-schema/sketchfab-model-schema.json
+  - type: JSONLD
+    url: json-ld/sketchfab-context.jsonld
+- aid: sketchfab:sketchfab-users-api
+  name: Sketchfab Users API
+  description: Retrieve user account information.
+  humanURL: https://sketchfab.com/developers/data-api
+  baseURL: https://api.sketchfab.com
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/sketchfab-users-api-openapi.yml
+  - type: Documentation
+    url: https://sketchfab.com/developers/data-api
+  - type: Documentation
+    url: https://docs.sketchfab.com/data-api/v3/index.html
+  - type: JSONSchema
+    url: json-schema/sketchfab-model-schema.json
+  - type: JSONLD
+    url: json-ld/sketchfab-context.jsonld
 name: Sketchfab
 tags:
   - 3D
