@@ -1,42 +1,32 @@
 {
   "item": [
     {
-      "id": "ba1a684d-a6af-43a3-b219-e4eca1187a05",
-      "name": "Download",
+      "id": "274296bc-102e-42e8-b83a-f3a15e3da0dc",
+      "name": "Users",
       "description": {
-        "content": "Retrieve signed download URLs for a model.",
+        "content": "Retrieve user account information.",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "6e78658a-d0c3-4042-aac8-12aab7526cba",
-          "name": "Retrieve Model Download URLs",
+          "id": "992a2c9b-7e45-4ffd-9082-e0570d3e1fc7",
+          "name": "Retrieve The Current User",
           "request": {
-            "name": "Retrieve Model Download URLs",
+            "name": "Retrieve The Current User",
             "description": {
-              "content": "Returns short-lived signed URLs to the glTF, GLB, and USDZ archives for the requested model. The model must be marked downloadable and the caller must have permission to download it (license-compatible or owned).",
+              "content": "Get the authenticated user's profile, plan, and account metadata.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "v3",
-                "models",
-                ":uid",
-                "download"
+                "me"
               ],
               "host": [
                 "{{baseUrl}}"
               ],
               "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "uid",
-                  "description": "(Required) The Sketchfab model UID."
-                }
-              ]
+              "variable": []
             },
             "header": [
               {
@@ -49,29 +39,19 @@
           },
           "response": [
             {
-              "id": "e1ee23fd-dcc3-4e01-bce6-eb88318d7def",
-              "name": "Download URLs by format.",
+              "id": "5a380af3-aa64-43be-b855-350851b9afaa",
+              "name": "Authenticated user.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "models",
-                    ":uid",
-                    "download"
+                    "me"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) The Sketchfab model UID."
-                    }
-                  ]
+                  "variable": []
                 },
                 "header": [
                   {
@@ -98,34 +78,24 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"gltf\": {\n    \"url\": \"http://RecYEhfdOytoJf.hbhq3.apfM2tZV,H+p1qVo\",\n    \"size\": 4785,\n    \"expires\": 1509\n  },\n  \"glb\": {\n    \"url\": \"https://NJeaDnQoNmkUlRJizHfdt.ekhV5gYlNlFFgbzpQqQ1AZ4JuKWc.c5hE\",\n    \"size\": 8353,\n    \"expires\": 9818\n  },\n  \"usdz\": {\n    \"url\": \"https://DpZ.ffrJswk1PhLwWTpDWK7ZiU\",\n    \"size\": 1019,\n    \"expires\": 7235\n  }\n}",
+              "body": "{\n  \"uid\": \"string\",\n  \"username\": \"string\",\n  \"displayName\": \"string\",\n  \"profileUrl\": \"https://ghAPqwTSHNYBiTdrhF.rwpY6iuxwnqlqf8pAoYH\",\n  \"account\": \"string\",\n  \"avatar\": {}\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "fa9237e2-ac91-4c94-9f28-b6787cf912a7",
+              "id": "0c0629a0-d188-4b15-9eda-f729e612bf2d",
               "name": "Error response.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "models",
-                    ":uid",
-                    "download"
+                    "me"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) The Sketchfab model UID."
-                    }
-                  ]
+                  "variable": []
                 },
                 "header": [
                   {
@@ -155,17 +125,61 @@
               "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c64b2c60-9a53-42d4-b6f1-5d8baee9e14e",
+          "name": "Retrieve A User",
+          "request": {
+            "name": "Retrieve A User",
+            "description": {
+              "content": "Public profile for the requested user.",
+              "type": "text/plain"
             },
+            "url": {
+              "path": [
+                "v3",
+                "users",
+                ":username"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "username",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
             {
-              "id": "63b2bdd2-2f7d-4127-9f1f-e91a13e49fbc",
-              "name": "Error response.",
+              "id": "5bb44320-a489-4254-83e1-19044c55f6b3",
+              "name": "User profile.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "models",
-                    ":uid",
-                    "download"
+                    "users",
+                    ":username"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -176,8 +190,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) The Sketchfab model UID."
+                      "key": "username",
+                      "description": "(Required) "
                     }
                   ]
                 },
@@ -198,69 +212,15 @@
                 "method": "GET",
                 "body": {}
               },
-              "status": "Forbidden",
-              "code": 403,
+              "status": "OK",
+              "code": 200,
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "faf0436d-5f31-448f-b678-103cdc455a79",
-              "name": "Error response.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v3",
-                    "models",
-                    ":uid",
-                    "download"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) The Sketchfab model UID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "body": "{\n  \"uid\": \"string\",\n  \"username\": \"string\",\n  \"displayName\": \"string\",\n  \"profileUrl\": \"https://ghAPqwTSHNYBiTdrhF.rwpY6iuxwnqlqf8pAoYH\",\n  \"account\": \"string\",\n  \"avatar\": {}\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -287,7 +247,7 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "read"
+        "value": "read write"
       },
       {
         "key": "redirect_uri",
@@ -308,11 +268,11 @@
     ]
   },
   "info": {
-    "_postman_id": "6962d08e-8510-4ec5-abba-c1528e49b47e",
-    "name": "Sketchfab Download API",
+    "_postman_id": "a4c56e60-7328-4540-ad73-ce8276e07db8",
+    "name": "Sketchfab Data Users API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Programmatic download of downloadable Sketchfab models in glTF, GLB, and USDZ formats. The endpoint returns short-lived signed URLs for each available format. The caller must be authenticated on behalf of an end user (OAuth Authorization Code or Implicit flow); application-level downloads without user authentication require a direct contract with Sketchfab. Source formats (FBX, OBJ) are not exposed.\n\n\nContact Support:\n Name: Sketchfab Developer Support",
+      "content": "The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.\n\n\nContact Support:\n Name: Sketchfab Developer Support",
       "type": "text/plain"
     }
   }

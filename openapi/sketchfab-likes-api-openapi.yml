@@ -1,0 +1,89 @@
+openapi: 3.2.0
+info:
+  title: Sketchfab Data Likes API
+  description: 'The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.
+
+    '
+  version: v3
+  contact:
+    name: Sketchfab Developer Support
+    url: https://support.fab.com/s/?ProductOrigin=Sketchfab
+  license:
+    name: Sketchfab Developer Terms of Use
+    url: https://sketchfab.com/developers/terms
+servers:
+- url: https://api.sketchfab.com
+  description: Production API
+security:
+- OAuth2: []
+- ApiTokenAuth: []
+tags:
+- name: Likes
+  description: Likes (favorites) on a model.
+paths:
+  /v3/models/{uid}/likes:
+    post:
+      summary: Like A Model
+      description: Like the model on behalf of the authenticated user.
+      operationId: likeModel
+      tags:
+      - Likes
+      parameters:
+      - $ref: '#/components/parameters/ModelUid'
+      responses:
+        '201':
+          description: Like created.
+        '401':
+          $ref: '#/components/responses/Error'
+    delete:
+      summary: Unlike A Model
+      description: Remove the authenticated user's like for the model.
+      operationId: unlikeModel
+      tags:
+      - Likes
+      parameters:
+      - $ref: '#/components/parameters/ModelUid'
+      responses:
+        '204':
+          description: Like removed.
+components:
+  responses:
+    Error:
+      description: Error response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    ModelUid:
+      name: uid
+      in: path
+      required: true
+      description: Sketchfab model UID (hex string in the URL after /models/).
+      schema:
+        type: string
+  schemas:
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: Sketchfab OAuth 2.0. Access tokens are valid for one month.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sketchfab.com/oauth2/authorize/
+          tokenUrl: https://sketchfab.com/oauth2/token/
+          refreshUrl: https://sketchfab.com/oauth2/token/
+          scopes:
+            read: Read access to the caller's account, models, and collections.
+            write: Create, update, and delete the caller's models and collections.
+    ApiTokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Personal API token sent as `Authorization: Token <token>`.'

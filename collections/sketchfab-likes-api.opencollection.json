@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sketchfab Data Likes API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://sketchfab.com/oauth2/authorize/",
+      "accessTokenUrl": "https://sketchfab.com/oauth2/token/",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Likes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Like A Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sketchfab.com/v3/models/:uid/likes",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Sketchfab model UID (hex string in the URL after /models/)."
+              }
+            ]
+          },
+          "docs": "Like the model on behalf of the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Unlike A Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sketchfab.com/v3/models/:uid/likes",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Sketchfab model UID (hex string in the URL after /models/)."
+              }
+            ]
+          },
+          "docs": "Remove the authenticated user's like for the model."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

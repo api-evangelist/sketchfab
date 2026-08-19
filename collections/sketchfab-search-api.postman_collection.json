@@ -1,0 +1,310 @@
+{
+  "item": [
+    {
+      "id": "03ae9efd-776e-42b4-b52b-d46c1471070a",
+      "name": "Search",
+      "description": {
+        "content": "Search public Sketchfab content.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "db21c6ab-1175-4bde-813b-437f9478e461",
+          "name": "Search 3D Models",
+          "request": {
+            "name": "Search 3D Models",
+            "description": {
+              "content": "Search the public catalog of 3D models with full-text query, tags, categories, license, downloadable filter, and sort options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Full-text search query."
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Comma-separated list of tag slugs."
+                },
+                {
+                  "disabled": false,
+                  "key": "categories",
+                  "value": "<string>",
+                  "description": "Comma-separated list of category slugs."
+                },
+                {
+                  "disabled": false,
+                  "key": "downloadable",
+                  "value": "<boolean>",
+                  "description": "Restrict to downloadable models."
+                },
+                {
+                  "disabled": false,
+                  "key": "license",
+                  "value": "<string>",
+                  "description": "License filter (e.g. by, by-sa, cc0, ed, st)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Sort order (-publishedAt, -likeCount, -viewCount, -processedAt)."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor returned by previous response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "433d47fb-6ed7-4696-98bc-5679e35da14e",
+              "name": "Paginated list of models.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "downloadable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cursors\": {\n    \"next\": \"string\",\n    \"previous\": \"string\"\n  },\n  \"results\": [\n    {\n      \"uid\": \"string\",\n      \"uri\": \"http://FXr.wftdUPpCxO6XzQ.TPtGmySvcmGVGhSYCd+5xykmOdmkEmSNWIEv-Vp8J8rVYmqQNb7zwY\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"viewerUrl\": \"https://KWfVexCiAFflqwicAMafEefgy.pjjSo9gmU\",\n      \"embedUrl\": \"https://ITEarnNhToHbmIQYYwTc.kkN32aiQLhbks.R5QaL7cqBvseu4bNGxOLjyZxPxVppp3,nROjLZ4XZsrvasQ1xNC6R\",\n      \"thumbnails\": {},\n      \"tags\": [\n        {\n          \"slug\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"slug\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"categories\": [\n        {\n          \"slug\": \"string\",\n          \"name\": \"string\",\n          \"uri\": \"https://kQdxscXGG.bzdbP0u5RvQTkOQmlvC-nx66ZzcllA5OxfSKORj,aDPRIkY2E,\"\n        },\n        {\n          \"slug\": \"string\",\n          \"name\": \"string\",\n          \"uri\": \"https://RSWwkGEpgTzaNFeMaHLmRAjEThmHlNNUg.ojfX0xQQLOcRdCrJVuefsgJlErzaRoP5k.3vU7qMtNDC5ALRkG\"\n        }\n      ],\n      \"license\": {\n        \"slug\": \"string\",\n        \"label\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"user\": {\n        \"uid\": \"string\",\n        \"username\": \"string\",\n        \"displayName\": \"string\",\n        \"profileUrl\": \"https://RdnNyaZVTJSstcSKvuZTFAsgs.lgdUrJIUqYixSjjVScbVcp\",\n        \"account\": \"string\",\n        \"avatar\": {}\n      },\n      \"isDownloadable\": false,\n      \"animationCount\": 2971,\n      \"vertexCount\": 3927,\n      \"faceCount\": 5616,\n      \"viewCount\": 6843,\n      \"likeCount\": 7260,\n      \"commentCount\": 1925,\n      \"publishedAt\": \"2020-11-11T11:32:53.956Z\",\n      \"createdAt\": \"1985-05-31T08:10:15.116Z\"\n    },\n    {\n      \"uid\": \"string\",\n      \"uri\": \"http://NnrOEfxMWIxPIbFjhOVrORnGzeDveJfUJ.qvpek.DUE8DkEfu0Zu-PKG6hFHiDSzkYH,0gVu\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"viewerUrl\": \"http://GaEIEMg.aggvwMriSTvbeG12XMXRGhfGgnhUDybU9dd-mWY.WmtTFc\",\n      \"embedUrl\": \"https://sMOtqdBPJBDphbyvnwccQNoGIJ.jzwyLvHRb,T4PH6.CCMZll-4RtOFfcpdEJMdLXwMpQAulvAtWjT3ON,yx58SOYkrIgIQ1,\",\n      \"thumbnails\": {},\n      \"tags\": [\n        {\n          \"slug\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"slug\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"categories\": [\n        {\n          \"slug\": \"string\",\n          \"name\": \"string\",\n          \"uri\": \"http://cTXYWeLgOLssfWhwFmtnOC.ujfzWWwpu6Bz9iraPm2NUDM7wfyaSo2zoMdGy0PyhSx2Ag.vJ.rxuG5LeTFh0wXC\"\n        },\n        {\n          \"slug\": \"string\",\n          \"name\": \"string\",\n          \"uri\": \"https://SRbcGCxjtWfqseadIpWmrI.scuVh54t1PxgFK,WmiZb,XhSXdF8BGmidMkZ1Co\"\n        }\n      ],\n      \"license\": {\n        \"slug\": \"string\",\n        \"label\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"user\": {\n        \"uid\": \"string\",\n        \"username\": \"string\",\n        \"displayName\": \"string\",\n        \"profileUrl\": \"http://lFduwTxeBnNrvGwVtWNSKyMXU.adutKuG\",\n        \"account\": \"string\",\n        \"avatar\": {}\n      },\n      \"isDownloadable\": false,\n      \"animationCount\": 895,\n      \"vertexCount\": 1439,\n      \"faceCount\": 1129,\n      \"viewCount\": 6193,\n      \"likeCount\": 6756,\n      \"commentCount\": 7565,\n      \"publishedAt\": \"1979-09-28T12:13:40.989Z\",\n      \"createdAt\": \"1959-11-25T09:33:05.738Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53e22a31-f8a9-409f-a324-1c1ff1adff31",
+          "name": "Search Sketchfab",
+          "request": {
+            "name": "Search Sketchfab",
+            "description": {
+              "content": "Unified search across models, collections, and users with a `type` selector.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "One of `models`, `collections`, or `users`."
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86310174-e367-40f4-bfe1-d64b7c3eb7ab",
+              "name": "Search results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sketchfab.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "read write"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://sketchfab.com/oauth2/token/"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://sketchfab.com/oauth2/token/"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://sketchfab.com/oauth2/authorize/"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7088cbfb-2d14-40a7-945a-0703cb6c05a9",
+    "name": "Sketchfab Data Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.\n\n\nContact Support:\n Name: Sketchfab Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

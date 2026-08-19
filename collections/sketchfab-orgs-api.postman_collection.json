@@ -1,0 +1,235 @@
+{
+  "item": [
+    {
+      "id": "cd2ce08c-bdcb-4116-b5b8-6f06e6c5345f",
+      "name": "Orgs",
+      "description": {
+        "content": "Organization, project, and member management.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ebe66714-1da0-4bab-889a-760528d49b3d",
+          "name": "Retrieve An Organization",
+          "request": {
+            "name": "Retrieve An Organization",
+            "description": {
+              "content": "Get organization detail, including plan and member count, for organizations the caller belongs to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "orgs",
+                ":org"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a01289a5-c63b-4774-bdb7-62f9167b32a4",
+              "name": "Organization detail.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "orgs",
+                    ":org"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78fc5bc1-7c74-44d2-ab87-908369de8f5f",
+          "name": "List Organization Projects",
+          "request": {
+            "name": "List Organization Projects",
+            "description": {
+              "content": "List projects (workspaces) within an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "orgs",
+                ":org",
+                "projects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc7ce04c-1883-4023-a6ad-a9cf3f84941a",
+              "name": "Project list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "orgs",
+                    ":org",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sketchfab.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "read write"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://sketchfab.com/oauth2/token/"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://sketchfab.com/oauth2/token/"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://sketchfab.com/oauth2/authorize/"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cbacea83-961c-42de-b3f5-28c600739c53",
+    "name": "Sketchfab Data Orgs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.\n\n\nContact Support:\n Name: Sketchfab Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

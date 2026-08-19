@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "15cdf12c-40bc-4e26-822c-e6719ca059fa",
+      "id": "554c8482-8a4a-4f05-a95f-8bed9dc58556",
       "name": "oEmbed",
       "description": {
         "content": "oEmbed-protocol embed endpoint.",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "095f4bb8-9499-4372-9732-b988cc621349",
+          "id": "45c95dbd-22e0-45c9-ac8c-c32bf907af7d",
           "name": "Retrieve oEmbed Response",
           "request": {
             "name": "Retrieve oEmbed Response",
@@ -63,7 +63,7 @@
           },
           "response": [
             {
-              "id": "8236223c-6c96-4fec-8495-67cabf099f91",
+              "id": "db8f298b-5dcf-444f-b63a-c69bf4b87196",
               "name": "oEmbed response.",
               "originalRequest": {
                 "url": {
@@ -95,6 +95,14 @@
                 },
                 "header": [
                   {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
                     "key": "Accept",
                     "value": "application/json"
                   }
@@ -110,12 +118,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"type\": \"rich\",\n  \"version\": \"1.0\",\n  \"provider_name\": \"Sketchfab\",\n  \"provider_url\": \"https://sketchfab.com\",\n  \"title\": \"string\",\n  \"author_name\": \"string\",\n  \"author_url\": \"http://QukgRKcU.kyyuasjSpOXoAU0Jj7aAKr2jAFhtoXfFZWBGyCoiFfFm7e8sa,EpiIaksf\",\n  \"html\": \"string\",\n  \"width\": 7430,\n  \"height\": 6747,\n  \"thumbnail_url\": \"https://vsHwLeKVNlKIxA.evdgrQO0THBq1bUpfLV6Hz+TfPl1OaTV3UUR\",\n  \"thumbnail_width\": 6819,\n  \"thumbnail_height\": 4615\n}",
+              "body": "{\n  \"type\": \"rich\",\n  \"version\": \"1.0\",\n  \"provider_name\": \"Sketchfab\",\n  \"provider_url\": \"https://sketchfab.com\",\n  \"title\": \"string\",\n  \"author_name\": \"string\",\n  \"author_url\": \"http://bLGakneWOA.rwLJKRomIoLuLzCD+uXw8ilo5U,OAYqOA2dnd00g\",\n  \"html\": \"string\",\n  \"width\": 8742,\n  \"height\": 676,\n  \"thumbnail_url\": \"https://tsMSODNtUXtmNDrQxxERJAzaAuf.slpAYw6\",\n  \"thumbnail_width\": 5759,\n  \"thumbnail_height\": 9379\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "6025df2f-4595-463c-ac32-5fbf4cd395c1",
+              "id": "fea91b4e-86b9-4887-a181-b225f1cc85bd",
               "name": "URL is not a recognised Sketchfab resource.",
               "originalRequest": {
                 "url": {
@@ -145,6 +153,16 @@
                   ],
                   "variable": []
                 },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
                 "method": "GET",
                 "body": {}
               },
@@ -174,16 +192,41 @@
   "variable": [
     {
       "type": "string",
-      "value": "https://sketchfab.com",
+      "value": "https://api.sketchfab.com",
       "key": "baseUrl"
     }
   ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "read"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://sketchfab.com/oauth2/token/"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://sketchfab.com/oauth2/token/"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://sketchfab.com/oauth2/authorize/"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
   "info": {
-    "_postman_id": "113654cf-ae38-4574-8625-a232e810986a",
-    "name": "Sketchfab oEmbed API",
+    "_postman_id": "41895a34-a0c6-47aa-a16b-cbd4a1ffa670",
+    "name": "Sketchfab Download O Embed API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "The Sketchfab oEmbed endpoint follows the oEmbed protocol (https://oembed.com/). Given a Sketchfab model or playlist URL it returns a JSON response containing an HTML `<iframe>` snippet that embeds the Sketchfab viewer. The returned viewer always uses a 16:9 aspect ratio regardless of the maxwidth and maxheight parameters.\n\n\nContact Support:\n Name: Sketchfab Developer Support",
+      "content": "Programmatic download of downloadable Sketchfab models in glTF, GLB, and USDZ formats. The endpoint returns short-lived signed URLs for each available format. The caller must be authenticated on behalf of an end user (OAuth Authorization Code or Implicit flow); application-level downloads without user authentication require a direct contract with Sketchfab. Source formats (FBX, OBJ) are not exposed.\n\n\nContact Support:\n Name: Sketchfab Developer Support",
       "type": "text/plain"
     }
   }

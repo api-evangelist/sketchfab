@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "3a9c99b8-85d3-4006-8361-cc41bbc10c36",
+      "id": "cebb342f-1306-4d65-8349-9e5fc866aee9",
       "name": "OAuth",
       "description": {
         "content": "OAuth 2.0 authorization and token endpoints.",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "f5fd2120-3294-409e-8bf0-d34aa74fce6d",
+          "id": "f7586bb0-8df6-49be-9528-4360ceb07796",
           "name": "OAuth Authorize Endpoint",
           "request": {
             "name": "OAuth Authorize Endpoint",
@@ -65,7 +65,7 @@
           },
           "response": [
             {
-              "id": "2d37d49f-8e2c-4eb1-ac31-ad63a909e190",
+              "id": "e704e479-a758-4bf0-bc5d-507ce6f164aa",
               "name": "Redirect to the application's redirect_uri carrying `code` or `access_token`.",
               "originalRequest": {
                 "url": {
@@ -101,6 +101,16 @@
                   ],
                   "variable": []
                 },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
                 "method": "GET",
                 "body": {}
               },
@@ -123,7 +133,7 @@
           }
         },
         {
-          "id": "1f91adb3-14e1-48d8-9b85-5bf57faf04f8",
+          "id": "4b2deb58-b8dd-4b03-b07a-47f19c372f88",
           "name": "OAuth Token Endpoint",
           "request": {
             "name": "OAuth Token Endpoint",
@@ -210,7 +220,7 @@
           },
           "response": [
             {
-              "id": "6a1523fb-2712-4d50-956f-b1f2f931ecb6",
+              "id": "6738201a-8b8f-45d4-9c49-e36aa1786e39",
               "name": "Token response.",
               "originalRequest": {
                 "url": {
@@ -226,6 +236,14 @@
                   "variable": []
                 },
                 "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
@@ -314,12 +332,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"access_token\": \"string\",\n  \"token_type\": \"Bearer\",\n  \"expires_in\": 1022,\n  \"refresh_token\": \"string\",\n  \"scope\": \"string\"\n}",
+              "body": "{\n  \"access_token\": \"string\",\n  \"token_type\": \"Bearer\",\n  \"expires_in\": 2840,\n  \"refresh_token\": \"string\",\n  \"scope\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "330cb6a3-3e56-4741-bc60-a04f3fbdf5e8",
+              "id": "5117acb0-4e2e-48ed-8852-88e6f5628f75",
               "name": "Invalid request or grant.",
               "originalRequest": {
                 "url": {
@@ -334,6 +352,16 @@
                   "query": [],
                   "variable": []
                 },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
                 "method": "POST",
                 "body": {
                   "mode": "urlencoded",
@@ -435,16 +463,41 @@
   "variable": [
     {
       "type": "string",
-      "value": "https://sketchfab.com",
+      "value": "https://api.sketchfab.com",
       "key": "baseUrl"
     }
   ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "read"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://sketchfab.com/oauth2/token/"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://sketchfab.com/oauth2/token/"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://sketchfab.com/oauth2/authorize/"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
   "info": {
-    "_postman_id": "459fd7c3-48b7-473d-9c4f-69d7d368009c",
-    "name": "Sketchfab OAuth 2.0 API",
+    "_postman_id": "2132c487-26a1-4a66-b7ef-61f38cde70b0",
+    "name": "Sketchfab Download O Auth API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Sketchfab OAuth 2.0 authorization server. Supports the Authorization Code, Implicit, and Resource Owner Password Credentials grant types plus refresh token rotation. Access tokens are valid for one month; the Implicit flow does not issue refresh tokens.\n\n\nContact Support:\n Name: Sketchfab Developer Support",
+      "content": "Programmatic download of downloadable Sketchfab models in glTF, GLB, and USDZ formats. The endpoint returns short-lived signed URLs for each available format. The caller must be authenticated on behalf of an end user (OAuth Authorization Code or Implicit flow); application-level downloads without user authentication require a direct contract with Sketchfab. Source formats (FBX, OBJ) are not exposed.\n\n\nContact Support:\n Name: Sketchfab Developer Support",
       "type": "text/plain"
     }
   }

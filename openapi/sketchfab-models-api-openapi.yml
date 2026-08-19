@@ -1,0 +1,357 @@
+openapi: 3.2.0
+info:
+  title: Sketchfab Data Models API
+  description: 'The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.
+
+    '
+  version: v3
+  contact:
+    name: Sketchfab Developer Support
+    url: https://support.fab.com/s/?ProductOrigin=Sketchfab
+  license:
+    name: Sketchfab Developer Terms of Use
+    url: https://sketchfab.com/developers/terms
+servers:
+- url: https://api.sketchfab.com
+  description: Production API
+security:
+- OAuth2: []
+- ApiTokenAuth: []
+tags:
+- name: Models
+  description: Manage 3D models — upload, list, retrieve, update, delete.
+paths:
+  /v3/models:
+    get:
+      summary: Search 3D Models
+      description: Search the public catalog of 3D models with full-text query, tags, categories, license, downloadable filter, and sort options.
+      operationId: searchModels
+      tags:
+      - Models
+      parameters:
+      - name: q
+        in: query
+        description: Full-text search query.
+        schema:
+          type: string
+      - name: tags
+        in: query
+        description: Comma-separated list of tag slugs.
+        schema:
+          type: string
+      - name: categories
+        in: query
+        description: Comma-separated list of category slugs.
+        schema:
+          type: string
+      - name: downloadable
+        in: query
+        description: Restrict to downloadable models.
+        schema:
+          type: boolean
+      - name: license
+        in: query
+        description: License filter (e.g. by, by-sa, cc0, ed, st).
+        schema:
+          type: string
+      - name: sort_by
+        in: query
+        description: Sort order (-publishedAt, -likeCount, -viewCount, -processedAt).
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        description: Pagination cursor returned by previous response.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Paginated list of models.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelList'
+    post:
+      summary: Upload A Model
+      description: Create a new model from an uploaded 3D asset. Send multipart/form-data with the model file and metadata fields. Returns a model uid that can be polled until processing completes.
+      operationId: uploadModel
+      tags:
+      - Models
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - modelFile
+              - name
+              properties:
+                modelFile:
+                  type: string
+                  format: binary
+                  description: The 3D model archive (zip) or single supported file.
+                name:
+                  type: string
+                description:
+                  type: string
+                tags:
+                  type: string
+                  description: Space- or comma-separated tags.
+                categories:
+                  type: string
+                  description: Comma-separated category slugs.
+                license:
+                  type: string
+                  description: License slug (e.g. cc-by, cc-by-sa, cc0, st).
+                private:
+                  type: boolean
+                password:
+                  type: string
+                isPublished:
+                  type: boolean
+                source:
+                  type: string
+                  description: Source application identifier (e.g. blender-exporter).
+      responses:
+        '201':
+          description: Model created and queued for processing.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uid:
+                    type: string
+                  uri:
+                    type: string
+                    format: uri
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Error'
+  /v3/models/{uid}:
+    get:
+      summary: Retrieve A Model
+      description: Get the public detail record for a single model — metadata, viewer URL, embed URL, thumbnails, and download availability.
+      operationId: getModel
+      tags:
+      - Models
+      parameters:
+      - $ref: '#/components/parameters/ModelUid'
+      responses:
+        '200':
+          description: Model detail.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model'
+        '404':
+          $ref: '#/components/responses/Error'
+    patch:
+      summary: Update A Model
+      description: Update editable fields on a model owned by the authenticated user (name, description, tags, categories, license, private flag, password, publish state).
+      operationId: updateModel
+      tags:
+      - Models
+      parameters:
+      - $ref: '#/components/parameters/ModelUid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelUpdate'
+      responses:
+        '204':
+          description: Model updated.
+        '401':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
+    delete:
+      summary: Delete A Model
+      description: Permanently delete a model owned by the authenticated user.
+      operationId: deleteModel
+      tags:
+      - Models
+      parameters:
+      - $ref: '#/components/parameters/ModelUid'
+      responses:
+        '204':
+          description: Model deleted.
+        '401':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
+components:
+  parameters:
+    ModelUid:
+      name: uid
+      in: path
+      required: true
+      description: Sketchfab model UID (hex string in the URL after /models/).
+      schema:
+        type: string
+  schemas:
+    Model:
+      type: object
+      properties:
+        uid:
+          type: string
+        uri:
+          type: string
+          format: uri
+        name:
+          type: string
+        description:
+          type: string
+        viewerUrl:
+          type: string
+          format: uri
+        embedUrl:
+          type: string
+          format: uri
+        thumbnails:
+          type: object
+        tags:
+          type: array
+          items:
+            type: object
+            properties:
+              slug:
+                type: string
+              name:
+                type: string
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        license:
+          type: object
+          properties:
+            slug:
+              type: string
+            label:
+              type: string
+            uri:
+              type: string
+        user:
+          $ref: '#/components/schemas/User'
+        isDownloadable:
+          type: boolean
+        animationCount:
+          type: integer
+        vertexCount:
+          type: integer
+        faceCount:
+          type: integer
+        viewCount:
+          type: integer
+        likeCount:
+          type: integer
+        commentCount:
+          type: integer
+        publishedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+    User:
+      type: object
+      properties:
+        uid:
+          type: string
+        username:
+          type: string
+        displayName:
+          type: string
+        profileUrl:
+          type: string
+          format: uri
+        account:
+          type: string
+          description: Plan slug (basic, plus, pro, premium, business, enterprise).
+        avatar:
+          type: object
+    ModelUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        categories:
+          type: array
+          items:
+            type: string
+        license:
+          type: string
+        private:
+          type: boolean
+        password:
+          type: string
+        isPublished:
+          type: boolean
+    Category:
+      type: object
+      properties:
+        slug:
+          type: string
+        name:
+          type: string
+        uri:
+          type: string
+          format: uri
+    ModelList:
+      type: object
+      properties:
+        cursors:
+          type: object
+          properties:
+            next:
+              type: string
+              nullable: true
+            previous:
+              type: string
+              nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
+  responses:
+    Error:
+      description: Error response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: Sketchfab OAuth 2.0. Access tokens are valid for one month.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sketchfab.com/oauth2/authorize/
+          tokenUrl: https://sketchfab.com/oauth2/token/
+          refreshUrl: https://sketchfab.com/oauth2/token/
+          scopes:
+            read: Read access to the caller's account, models, and collections.
+            write: Create, update, and delete the caller's models and collections.
+    ApiTokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Personal API token sent as `Authorization: Token <token>`.'

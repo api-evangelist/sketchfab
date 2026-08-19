@@ -1,20 +1,20 @@
 {
   "item": [
     {
-      "id": "ba1a684d-a6af-43a3-b219-e4eca1187a05",
-      "name": "Download",
+      "id": "4b545114-521c-4679-b23f-5b18e9b99495",
+      "name": "Likes",
       "description": {
-        "content": "Retrieve signed download URLs for a model.",
+        "content": "Likes (favorites) on a model.",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "6e78658a-d0c3-4042-aac8-12aab7526cba",
-          "name": "Retrieve Model Download URLs",
+          "id": "7fc1c923-eec7-4ba6-9378-6349f1268c6e",
+          "name": "Like A Model",
           "request": {
-            "name": "Retrieve Model Download URLs",
+            "name": "Like A Model",
             "description": {
-              "content": "Returns short-lived signed URLs to the glTF, GLB, and USDZ archives for the requested model. The model must be marked downloadable and the caller must have permission to download it (license-compatible or owned).",
+              "content": "Like the model on behalf of the authenticated user.",
               "type": "text/plain"
             },
             "url": {
@@ -22,7 +22,7 @@
                 "v3",
                 "models",
                 ":uid",
-                "download"
+                "likes"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -34,7 +34,7 @@
                   "type": "any",
                   "value": "<string>",
                   "key": "uid",
-                  "description": "(Required) The Sketchfab model UID."
+                  "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
                 }
               ]
             },
@@ -44,20 +44,20 @@
                 "value": "application/json"
               }
             ],
-            "method": "GET",
+            "method": "POST",
             "auth": null
           },
           "response": [
             {
-              "id": "e1ee23fd-dcc3-4e01-bce6-eb88318d7def",
-              "name": "Download URLs by format.",
+              "id": "ca65c1a3-c2b4-4c34-bf3a-f3116fcd6991",
+              "name": "Like created.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
                     "models",
                     ":uid",
-                    "download"
+                    "likes"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -69,7 +69,7 @@
                       "type": "any",
                       "value": "<string>",
                       "key": "uid",
-                      "description": "(Required) The Sketchfab model UID."
+                      "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
                     }
                   ]
                 },
@@ -81,29 +81,25 @@
                     },
                     "key": "Authorization",
                     "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
                   }
                 ],
-                "method": "GET",
+                "method": "POST",
                 "body": {}
               },
-              "status": "OK",
-              "code": 200,
+              "status": "Created",
+              "code": 201,
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "text/plain"
                 }
               ],
-              "body": "{\n  \"gltf\": {\n    \"url\": \"http://RecYEhfdOytoJf.hbhq3.apfM2tZV,H+p1qVo\",\n    \"size\": 4785,\n    \"expires\": 1509\n  },\n  \"glb\": {\n    \"url\": \"https://NJeaDnQoNmkUlRJizHfdt.ekhV5gYlNlFFgbzpQqQ1AZ4JuKWc.c5hE\",\n    \"size\": 8353,\n    \"expires\": 9818\n  },\n  \"usdz\": {\n    \"url\": \"https://DpZ.ffrJswk1PhLwWTpDWK7ZiU\",\n    \"size\": 1019,\n    \"expires\": 7235\n  }\n}",
+              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "_postman_previewlanguage": "text"
             },
             {
-              "id": "fa9237e2-ac91-4c94-9f28-b6787cf912a7",
+              "id": "963bf397-f986-4625-b3e8-6e891f861100",
               "name": "Error response.",
               "originalRequest": {
                 "url": {
@@ -111,7 +107,7 @@
                     "v3",
                     "models",
                     ":uid",
-                    "download"
+                    "likes"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -123,7 +119,7 @@
                       "type": "any",
                       "value": "<string>",
                       "key": "uid",
-                      "description": "(Required) The Sketchfab model UID."
+                      "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
                     }
                   ]
                 },
@@ -141,7 +137,7 @@
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
+                "method": "POST",
                 "body": {}
               },
               "status": "Unauthorized",
@@ -155,17 +151,57 @@
               "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d26440d1-476e-431c-9a85-cdd86577a90d",
+          "name": "Unlike A Model",
+          "request": {
+            "name": "Unlike A Model",
+            "description": {
+              "content": "Remove the authenticated user's like for the model.",
+              "type": "text/plain"
             },
+            "url": {
+              "path": [
+                "v3",
+                "models",
+                ":uid",
+                "likes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uid",
+                  "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
             {
-              "id": "63b2bdd2-2f7d-4127-9f1f-e91a13e49fbc",
-              "name": "Error response.",
+              "id": "d14a198b-70a0-4d25-b319-2e5e7f073e94",
+              "name": "Like removed.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
                     "models",
                     ":uid",
-                    "download"
+                    "likes"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -177,7 +213,7 @@
                       "type": "any",
                       "value": "<string>",
                       "key": "uid",
-                      "description": "(Required) The Sketchfab model UID."
+                      "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
                     }
                   ]
                 },
@@ -189,80 +225,22 @@
                     },
                     "key": "Authorization",
                     "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
                   }
                 ],
-                "method": "GET",
+                "method": "DELETE",
                 "body": {}
               },
-              "status": "Forbidden",
-              "code": 403,
+              "status": "No Content",
+              "code": 204,
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "text/plain"
                 }
               ],
-              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "faf0436d-5f31-448f-b678-103cdc455a79",
-              "name": "Error response.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v3",
-                    "models",
-                    ":uid",
-                    "download"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) The Sketchfab model UID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "_postman_previewlanguage": "text"
             }
           ],
           "event": [],
@@ -287,7 +265,7 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "read"
+        "value": "read write"
       },
       {
         "key": "redirect_uri",
@@ -308,11 +286,11 @@
     ]
   },
   "info": {
-    "_postman_id": "6962d08e-8510-4ec5-abba-c1528e49b47e",
-    "name": "Sketchfab Download API",
+    "_postman_id": "b6aac2ef-35b6-4cc0-bfec-37efd881b793",
+    "name": "Sketchfab Data Likes API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Programmatic download of downloadable Sketchfab models in glTF, GLB, and USDZ formats. The endpoint returns short-lived signed URLs for each available format. The caller must be authenticated on behalf of an end user (OAuth Authorization Code or Implicit flow); application-level downloads without user authentication require a direct contract with Sketchfab. Source formats (FBX, OBJ) are not exposed.\n\n\nContact Support:\n Name: Sketchfab Developer Support",
+      "content": "The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.\n\n\nContact Support:\n Name: Sketchfab Developer Support",
       "type": "text/plain"
     }
   }

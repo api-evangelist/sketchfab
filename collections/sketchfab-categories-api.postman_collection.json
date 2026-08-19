@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "c27e5e28-0dec-4f2c-83b4-56cb9b1de495",
+      "name": "Categories",
+      "description": {
+        "content": "Public Sketchfab category taxonomy.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "987e8850-0b0b-46bb-8e4a-b6c5d6550aa8",
+          "name": "List Categories",
+          "request": {
+            "name": "List Categories",
+            "description": {
+              "content": "Public Sketchfab category taxonomy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c62f81bf-6fa0-45f4-a886-6cc1cc969c86",
+              "name": "Category list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"slug\": \"string\",\n      \"name\": \"string\",\n      \"uri\": \"https://vYGjvmTroNXA.suPAxepvXvZ.aSecUVQkQ\"\n    },\n    {\n      \"slug\": \"string\",\n      \"name\": \"string\",\n      \"uri\": \"https://tnS.expvi2\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sketchfab.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "read write"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://sketchfab.com/oauth2/token/"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://sketchfab.com/oauth2/token/"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://sketchfab.com/oauth2/authorize/"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e147d01e-cafc-4c16-ac8f-7bba58399894",
+    "name": "Sketchfab Data Categories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.\n\n\nContact Support:\n Name: Sketchfab Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

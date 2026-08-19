@@ -1,0 +1,371 @@
+{
+  "item": [
+    {
+      "id": "80ce007f-f436-4c17-b85c-0f39533aa4e4",
+      "name": "Collections",
+      "description": {
+        "content": "Group models into themed collections.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4db9ac56-2ad1-48d6-95ad-64d8ce81957b",
+          "name": "List Collections",
+          "request": {
+            "name": "List Collections",
+            "description": {
+              "content": "List collections for the authenticated user or for the user filter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a3ce119-6fec-435e-aa9a-91476d6fd2e1",
+              "name": "Collection list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"uid\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"modelCount\": 2983,\n      \"embedUrl\": \"http://FJPCAlTGnBSbON.qlzRusodqvPde2BGbh5vm4uJ4Wb3VDU9t4\",\n      \"user\": {\n        \"uid\": \"string\",\n        \"username\": \"string\",\n        \"displayName\": \"string\",\n        \"profileUrl\": \"http://qnqWMpxDBUVwW.czahv4BLuftB0OJmo3bwwzpWpckyjgFpGEm6\",\n        \"account\": \"string\",\n        \"avatar\": {}\n      }\n    },\n    {\n      \"uid\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"modelCount\": 3583,\n      \"embedUrl\": \"http://atfeKocIo.abUMeIJALEA5aNl-EGQYSfidFw\",\n      \"user\": {\n        \"uid\": \"string\",\n        \"username\": \"string\",\n        \"displayName\": \"string\",\n        \"profileUrl\": \"https://PdXSyEjpJjbdOeWZ.lwnkQbig,,bXcJaFjQVXDZ7pa5Ddeb+8ZkLsZkq4X.+Tk8\",\n        \"account\": \"string\",\n        \"avatar\": {}\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75186bb8-a22f-4ee3-afa7-3ab28c3a6df4",
+          "name": "Create A Collection",
+          "request": {
+            "name": "Create A Collection",
+            "description": {
+              "content": "Create a new collection of models.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"isPrivate\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "41022a59-39c5-43e5-90b8-a52f3000117a",
+              "name": "Collection created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"isPrivate\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uid\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"modelCount\": 991,\n  \"embedUrl\": \"https://IIRnZvCEcBZpedpv.cqN,F1o08GaTDiGJqty.FYnwsNQ0N9Qu4r,cR\",\n  \"user\": {\n    \"uid\": \"string\",\n    \"username\": \"string\",\n    \"displayName\": \"string\",\n    \"profileUrl\": \"https://OBWEpvxnjcQqzatYh.cvtkv\",\n    \"account\": \"string\",\n    \"avatar\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b876f1a-ba3c-4e7a-b5d0-4ac9c0f2652b",
+          "name": "Add A Model To A Collection",
+          "request": {
+            "name": "Add A Model To A Collection",
+            "description": {
+              "content": "Add a model to the specified collection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "collections",
+                ":uid",
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"models\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0d588685-c856-4ef9-89d2-280d1b31e6c9",
+              "name": "Model(s) added.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "collections",
+                    ":uid",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"models\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sketchfab.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "read write"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://sketchfab.com/oauth2/token/"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://sketchfab.com/oauth2/token/"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://sketchfab.com/oauth2/authorize/"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7b1a49dd-dc37-4e8b-ac41-da7c88ca7ddf",
+    "name": "Sketchfab Data Collections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.\n\n\nContact Support:\n Name: Sketchfab Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

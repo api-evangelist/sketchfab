@@ -1,0 +1,1315 @@
+{
+  "item": [
+    {
+      "id": "2c4b415c-f23b-48b5-b9e9-d9693df32a35",
+      "name": "Models",
+      "description": {
+        "content": "Manage 3D models — upload, list, retrieve, update, delete.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "978080ce-e566-4e12-8a72-88475287adc3",
+          "name": "Search 3D Models",
+          "request": {
+            "name": "Search 3D Models",
+            "description": {
+              "content": "Search the public catalog of 3D models with full-text query, tags, categories, license, downloadable filter, and sort options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Full-text search query."
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Comma-separated list of tag slugs."
+                },
+                {
+                  "disabled": false,
+                  "key": "categories",
+                  "value": "<string>",
+                  "description": "Comma-separated list of category slugs."
+                },
+                {
+                  "disabled": false,
+                  "key": "downloadable",
+                  "value": "<boolean>",
+                  "description": "Restrict to downloadable models."
+                },
+                {
+                  "disabled": false,
+                  "key": "license",
+                  "value": "<string>",
+                  "description": "License filter (e.g. by, by-sa, cc0, ed, st)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Sort order (-publishedAt, -likeCount, -viewCount, -processedAt)."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor returned by previous response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38710268-b73f-4dd3-ab2c-5004e2c045b9",
+              "name": "Paginated list of models.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "downloadable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cursors\": {\n    \"next\": \"string\",\n    \"previous\": \"string\"\n  },\n  \"results\": [\n    {\n      \"uid\": \"string\",\n      \"uri\": \"https://vzLIrFsGfHwTlwBbtxfDDqRUZOzTqbDG.pwqVF.0rg.lGKiDIl2b3oUbfU2Y5.-tk7PKBJsgZgxqhpNolLh\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"viewerUrl\": \"http://a.gxa.K\",\n      \"embedUrl\": \"https://bYtkS.yjkss3Kr172hFvb7\",\n      \"thumbnails\": {},\n      \"tags\": [\n        {\n          \"slug\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"slug\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"categories\": [\n        {\n          \"slug\": \"string\",\n          \"name\": \"string\",\n          \"uri\": \"http://APDOtDYd.xgufL8BrAJ7ahaO9zpncAg6ZbGIjuASmiVyN,7oLmau7j\"\n        },\n        {\n          \"slug\": \"string\",\n          \"name\": \"string\",\n          \"uri\": \"http://ZsvbyZqaVVuTwTgyomUT.afTzIdNMm4RgIK0+xN8usYFZGH8\"\n        }\n      ],\n      \"license\": {\n        \"slug\": \"string\",\n        \"label\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"user\": {\n        \"uid\": \"string\",\n        \"username\": \"string\",\n        \"displayName\": \"string\",\n        \"profileUrl\": \"https://RwrnxszGcSxVbitwwuxSYJTvMbkeB.ltMxP7k63NNaAFU0,qI.EwvGxunrKipjF3pgS\",\n        \"account\": \"string\",\n        \"avatar\": {}\n      },\n      \"isDownloadable\": true,\n      \"animationCount\": 2434,\n      \"vertexCount\": 8255,\n      \"faceCount\": 9828,\n      \"viewCount\": 1454,\n      \"likeCount\": 442,\n      \"commentCount\": 4199,\n      \"publishedAt\": \"1987-01-24T06:18:42.634Z\",\n      \"createdAt\": \"2023-03-17T16:23:00.075Z\"\n    },\n    {\n      \"uid\": \"string\",\n      \"uri\": \"https://UdBfUcJSC.gkAgnB1coj5gRo45K9\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"viewerUrl\": \"http://lXz.ekacg3+7LnxhOw9rYEXNW9UA8\",\n      \"embedUrl\": \"http://jpASJFaWsU.ddkLcsF1zBDfclz4yCIg8xiLISjQc6dybHesfBab3\",\n      \"thumbnails\": {},\n      \"tags\": [\n        {\n          \"slug\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"slug\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"categories\": [\n        {\n          \"slug\": \"string\",\n          \"name\": \"string\",\n          \"uri\": \"http://NdjqpRsOiLVMARIjVHBPhIfGPFQPBK.ekucwvmaYvLSDrSeZ4Zq2OKa.tRCTEwev7kcO9BaqX\"\n        },\n        {\n          \"slug\": \"string\",\n          \"name\": \"string\",\n          \"uri\": \"http://bVZlJUTcTQolOqUkMHbmVrxYrhpTKeX.ezizL6eY\"\n        }\n      ],\n      \"license\": {\n        \"slug\": \"string\",\n        \"label\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"user\": {\n        \"uid\": \"string\",\n        \"username\": \"string\",\n        \"displayName\": \"string\",\n        \"profileUrl\": \"https://QcAKLpQQQqVicWhbvlEQ.pzdzt\",\n        \"account\": \"string\",\n        \"avatar\": {}\n      },\n      \"isDownloadable\": false,\n      \"animationCount\": 7729,\n      \"vertexCount\": 9941,\n      \"faceCount\": 8409,\n      \"viewCount\": 9200,\n      \"likeCount\": 8890,\n      \"commentCount\": 4713,\n      \"publishedAt\": \"1980-01-06T04:14:45.460Z\",\n      \"createdAt\": \"1986-08-22T12:07:21.360Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "902907e8-6069-4e9e-94a2-6d3d69f261df",
+          "name": "Upload A Model",
+          "request": {
+            "name": "Upload A Model",
+            "description": {
+              "content": "Create a new model from an uploaded 3D asset. Send multipart/form-data with the model file and metadata fields. Returns a model uid that can be polled until processing completes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "modelFile",
+                  "type": "file",
+                  "description": "(Required) The 3D model archive (zip) or single supported file."
+                },
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "description",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "tags",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Space- or comma-separated tags."
+                },
+                {
+                  "key": "categories",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Comma-separated category slugs."
+                },
+                {
+                  "key": "license",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "License slug (e.g. cc-by, cc-by-sa, cc0, st)."
+                },
+                {
+                  "key": "private",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "password",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "isPublished",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "source",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Source application identifier (e.g. blender-exporter)."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b3f3e513-f684-45a0-bf11-06b4cc79781a",
+              "name": "Model created and queued for processing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The 3D model archive (zip) or single supported file.",
+                        "type": "text/plain"
+                      },
+                      "key": "modelFile",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Space- or comma-separated tags.",
+                        "type": "text/plain"
+                      },
+                      "key": "tags",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Comma-separated category slugs.",
+                        "type": "text/plain"
+                      },
+                      "key": "categories",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "License slug (e.g. cc-by, cc-by-sa, cc0, st).",
+                        "type": "text/plain"
+                      },
+                      "key": "license",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "private",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "isPublished",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Source application identifier (e.g. blender-exporter).",
+                        "type": "text/plain"
+                      },
+                      "key": "source",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uid\": \"string\",\n  \"uri\": \"https://NLJnBKq.ida6YU-XVCsok8Jw0a\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8cfe675b-3e85-4561-b8b7-0ebbd012ae32",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The 3D model archive (zip) or single supported file.",
+                        "type": "text/plain"
+                      },
+                      "key": "modelFile",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Space- or comma-separated tags.",
+                        "type": "text/plain"
+                      },
+                      "key": "tags",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Comma-separated category slugs.",
+                        "type": "text/plain"
+                      },
+                      "key": "categories",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "License slug (e.g. cc-by, cc-by-sa, cc0, st).",
+                        "type": "text/plain"
+                      },
+                      "key": "license",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "private",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "isPublished",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Source application identifier (e.g. blender-exporter).",
+                        "type": "text/plain"
+                      },
+                      "key": "source",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b32960a-a90e-47f0-b277-bc29753de3f3",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The 3D model archive (zip) or single supported file.",
+                        "type": "text/plain"
+                      },
+                      "key": "modelFile",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Space- or comma-separated tags.",
+                        "type": "text/plain"
+                      },
+                      "key": "tags",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Comma-separated category slugs.",
+                        "type": "text/plain"
+                      },
+                      "key": "categories",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "License slug (e.g. cc-by, cc-by-sa, cc0, st).",
+                        "type": "text/plain"
+                      },
+                      "key": "license",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "private",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "isPublished",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Source application identifier (e.g. blender-exporter).",
+                        "type": "text/plain"
+                      },
+                      "key": "source",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f1e68bc-7898-4ccd-b892-472890bbbd60",
+          "name": "Retrieve A Model",
+          "request": {
+            "name": "Retrieve A Model",
+            "description": {
+              "content": "Get the public detail record for a single model — metadata, viewer URL, embed URL, thumbnails, and download availability.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "models",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uid",
+                  "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "655ceabe-231f-4327-9591-da9ad94c44b6",
+              "name": "Model detail.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "models",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uid\": \"string\",\n  \"uri\": \"http://anEJhGttqgCwVDL.pygW7UC-U,QcZAhmh3F6VUvpKMNuAZ+I+Z81nlTaHR2A-8SwctrHLdE9N\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"viewerUrl\": \"http://LhoywwjhKSRqXnbbYvrydPGEGVzjOlj.igvX0bfl4WV0WH+cPFRSM0Mz26O1YjgA7ADz8IVCm9hdXtYctK6zb9vTgN4+K64L\",\n  \"embedUrl\": \"https://DvacoPEbJWJRTuwTLhcH.yixspBnMvOY6h2hhWRsmv7UvsTGcZRuPRhXiEheVwz+LY\",\n  \"thumbnails\": {},\n  \"tags\": [\n    {\n      \"slug\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"name\": \"string\"\n    }\n  ],\n  \"categories\": [\n    {\n      \"slug\": \"string\",\n      \"name\": \"string\",\n      \"uri\": \"http://YaROiFuuHDcUiCEFYVOBwAtpCPxcLBD.jsrptqyqRuJ.pg+uCHjeRTW-eesod\"\n    },\n    {\n      \"slug\": \"string\",\n      \"name\": \"string\",\n      \"uri\": \"https://N.oglvzKzYf0hc7K7hcBnxzm4MObhZit5wBEFOFt\"\n    }\n  ],\n  \"license\": {\n    \"slug\": \"string\",\n    \"label\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"user\": {\n    \"uid\": \"string\",\n    \"username\": \"string\",\n    \"displayName\": \"string\",\n    \"profileUrl\": \"http://hMwIanxR.tvE-OIR.oMsxwvZJZg7IPgUlHgsAdP8eroeP-9XiJf+7BipgQePYOP-Pbjzv\",\n    \"account\": \"string\",\n    \"avatar\": {}\n  },\n  \"isDownloadable\": false,\n  \"animationCount\": 106,\n  \"vertexCount\": 456,\n  \"faceCount\": 2268,\n  \"viewCount\": 6681,\n  \"likeCount\": 1667,\n  \"commentCount\": 6064,\n  \"publishedAt\": \"1983-12-12T01:29:22.304Z\",\n  \"createdAt\": \"1990-05-22T00:38:18.547Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a542e53-2418-4e30-bd5c-515a3aff7b66",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "models",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9cdacb22-8019-4647-8b1d-2c5597d5987d",
+          "name": "Update A Model",
+          "request": {
+            "name": "Update A Model",
+            "description": {
+              "content": "Update editable fields on a model owned by the authenticated user (name, description, tags, categories, license, private flag, password, publish state).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "models",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uid",
+                  "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"license\": \"<string>\",\n  \"private\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"isPublished\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1a43c12b-f0e6-45ce-a405-39bb754eeb95",
+              "name": "Model updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "models",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"license\": \"<string>\",\n  \"private\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"isPublished\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "069976e6-b6bc-4348-adf4-54f08623bf42",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "models",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"license\": \"<string>\",\n  \"private\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"isPublished\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce485b7d-4bfe-4e83-9779-690b5965aaed",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "models",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"license\": \"<string>\",\n  \"private\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"isPublished\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce284c75-b54b-4141-a158-7024696c8f22",
+          "name": "Delete A Model",
+          "request": {
+            "name": "Delete A Model",
+            "description": {
+              "content": "Permanently delete a model owned by the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "models",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uid",
+                  "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5fe67767-7c4a-41e0-91bf-1280bd267742",
+              "name": "Model deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "models",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3bd3a302-b71c-4166-99cd-48124ae6e2d6",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "models",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3cb7d60d-a073-4738-a629-4375d86f35b6",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "models",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sketchfab.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "read write"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://sketchfab.com/oauth2/token/"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://sketchfab.com/oauth2/token/"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://sketchfab.com/oauth2/authorize/"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "495eaf23-68ec-4eaa-9c35-11df9d13ffa6",
+    "name": "Sketchfab Data Models API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.\n\n\nContact Support:\n Name: Sketchfab Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

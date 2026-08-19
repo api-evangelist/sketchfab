@@ -1,0 +1,162 @@
+openapi: 3.2.0
+info:
+  title: Sketchfab Data Collections API
+  description: 'The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.
+
+    '
+  version: v3
+  contact:
+    name: Sketchfab Developer Support
+    url: https://support.fab.com/s/?ProductOrigin=Sketchfab
+  license:
+    name: Sketchfab Developer Terms of Use
+    url: https://sketchfab.com/developers/terms
+servers:
+- url: https://api.sketchfab.com
+  description: Production API
+security:
+- OAuth2: []
+- ApiTokenAuth: []
+tags:
+- name: Collections
+  description: Group models into themed collections.
+paths:
+  /v3/collections:
+    get:
+      summary: List Collections
+      description: List collections for the authenticated user or for the user filter.
+      operationId: listCollections
+      tags:
+      - Collections
+      parameters:
+      - name: user
+        in: query
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Collection list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionList'
+    post:
+      summary: Create A Collection
+      description: Create a new collection of models.
+      operationId: createCollection
+      tags:
+      - Collections
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                isPrivate:
+                  type: boolean
+      responses:
+        '201':
+          description: Collection created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+  /v3/collections/{uid}/models:
+    post:
+      summary: Add A Model To A Collection
+      description: Add a model to the specified collection.
+      operationId: addModelToCollection
+      tags:
+      - Collections
+      parameters:
+      - name: uid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - models
+              properties:
+                models:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '201':
+          description: Model(s) added.
+components:
+  schemas:
+    Collection:
+      type: object
+      properties:
+        uid:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        modelCount:
+          type: integer
+        embedUrl:
+          type: string
+          format: uri
+        user:
+          $ref: '#/components/schemas/User'
+    User:
+      type: object
+      properties:
+        uid:
+          type: string
+        username:
+          type: string
+        displayName:
+          type: string
+        profileUrl:
+          type: string
+          format: uri
+        account:
+          type: string
+          description: Plan slug (basic, plus, pro, premium, business, enterprise).
+        avatar:
+          type: object
+    CollectionList:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Collection'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: Sketchfab OAuth 2.0. Access tokens are valid for one month.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sketchfab.com/oauth2/authorize/
+          tokenUrl: https://sketchfab.com/oauth2/token/
+          refreshUrl: https://sketchfab.com/oauth2/token/
+          scopes:
+            read: Read access to the caller's account, models, and collections.
+            write: Create, update, and delete the caller's models and collections.
+    ApiTokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Personal API token sent as `Authorization: Token <token>`.'

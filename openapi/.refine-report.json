@@ -1,20 +1,53 @@
 {
   "provider": "sketchfab",
   "sources": [
+    "sketchfab-bookmarks-api-openapi.yml",
+    "sketchfab-categories-api-openapi.yml",
+    "sketchfab-collections-api-openapi.yml",
+    "sketchfab-comments-api-openapi.yml",
     "sketchfab-download-api-openapi.yml",
+    "sketchfab-likes-api-openapi.yml",
+    "sketchfab-models-api-openapi.yml",
     "sketchfab-oauth-api-openapi.yml",
-    "sketchfab-oembed-api-openapi.yml"
+    "sketchfab-oembed-api-openapi.yml",
+    "sketchfab-orgs-api-openapi.yml",
+    "sketchfab-search-api-openapi.yml",
+    "sketchfab-tags-api-openapi.yml",
+    "sketchfab-users-api-openapi.yml"
   ],
   "outputs": [
+    "sketchfab-bookmarks-api-openapi.yml",
+    "sketchfab-categories-api-openapi.yml",
+    "sketchfab-collections-api-openapi.yml",
+    "sketchfab-comments-api-openapi.yml",
     "sketchfab-download-api-openapi.yml",
+    "sketchfab-likes-api-openapi.yml",
+    "sketchfab-models-api-openapi.yml",
     "sketchfab-oauth-api-openapi.yml",
-    "sketchfab-oembed-api-openapi.yml"
+    "sketchfab-oembed-api-openapi.yml",
+    "sketchfab-orgs-api-openapi.yml",
+    "sketchfab-search-api-openapi.yml",
+    "sketchfab-tags-api-openapi.yml",
+    "sketchfab-users-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": [
-    "sketchfab-data-api-openapi.yml: parse error ScannerError: mapping values are not allowed here"
-  ]
+  "notes": [
+    "sketchfab-bookmarks-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sketchfab-categories-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sketchfab-collections-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sketchfab-comments-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sketchfab-download-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sketchfab-likes-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sketchfab-models-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sketchfab-oauth-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sketchfab-oembed-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sketchfab-orgs-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sketchfab-search-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sketchfab-tags-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sketchfab-users-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": []
 }

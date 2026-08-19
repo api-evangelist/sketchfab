@@ -1,0 +1,56 @@
+openapi: 3.2.0
+info:
+  title: Sketchfab Data Tags API
+  description: 'The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.
+
+    '
+  version: v3
+  contact:
+    name: Sketchfab Developer Support
+    url: https://support.fab.com/s/?ProductOrigin=Sketchfab
+  license:
+    name: Sketchfab Developer Terms of Use
+    url: https://sketchfab.com/developers/terms
+servers:
+- url: https://api.sketchfab.com
+  description: Production API
+security:
+- OAuth2: []
+- ApiTokenAuth: []
+tags:
+- name: Tags
+  description: Tag-based discovery.
+paths:
+  /v3/tags:
+    get:
+      summary: List Tags
+      description: Discover popular and matching tags.
+      operationId: listTags
+      tags:
+      - Tags
+      parameters:
+      - name: q
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Tag list.
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: Sketchfab OAuth 2.0. Access tokens are valid for one month.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sketchfab.com/oauth2/authorize/
+          tokenUrl: https://sketchfab.com/oauth2/token/
+          refreshUrl: https://sketchfab.com/oauth2/token/
+          scopes:
+            read: Read access to the caller's account, models, and collections.
+            write: Create, update, and delete the caller's models and collections.
+    ApiTokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Personal API token sent as `Authorization: Token <token>`.'

@@ -1,0 +1,157 @@
+{
+  "item": [
+    {
+      "id": "6efe36c9-baf0-4e54-a702-73704f86842d",
+      "name": "Comments",
+      "description": {
+        "content": "Comments on a model.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "358a140f-c538-4a1d-be3f-942289564414",
+          "name": "List Model Comments",
+          "request": {
+            "name": "List Model Comments",
+            "description": {
+              "content": "Retrieve comments posted on a model.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "models",
+                ":uid",
+                "comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uid",
+                  "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4d2a85ed-8fed-41cc-bc92-e97a8f450054",
+              "name": "Comment list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "models",
+                    ":uid",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) Sketchfab model UID (hex string in the URL after /models/)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"uid\": \"string\",\n      \"body\": \"string\",\n      \"user\": {\n        \"uid\": \"string\",\n        \"username\": \"string\",\n        \"displayName\": \"string\",\n        \"profileUrl\": \"https://ULFBVtyZoMfdcvdJJbZvUrGWmh.fvuchMxwMVKQt+F..Sfc4XDTQe52NJIqlb0-1ymZoyqhBM1PxkhL\",\n        \"account\": \"string\",\n        \"avatar\": {}\n      },\n      \"createdAt\": \"2001-07-20T17:15:00.299Z\"\n    },\n    {\n      \"uid\": \"string\",\n      \"body\": \"string\",\n      \"user\": {\n        \"uid\": \"string\",\n        \"username\": \"string\",\n        \"displayName\": \"string\",\n        \"profileUrl\": \"http://LUWxXnYezAdRlgqiSPkoGTUEcJTgGj.ppwoCsmljibHNnOtBHFmchKEnJi-JOxmhzS0-9NFyQ\",\n        \"account\": \"string\",\n        \"avatar\": {}\n      },\n      \"createdAt\": \"1994-10-17T06:27:45.039Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sketchfab.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "read write"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://sketchfab.com/oauth2/token/"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://sketchfab.com/oauth2/token/"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://sketchfab.com/oauth2/authorize/"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "91b3ec8c-bfcd-4d98-af90-230d7955d4e6",
+    "name": "Sketchfab Data Comments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.\n\n\nContact Support:\n Name: Sketchfab Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
