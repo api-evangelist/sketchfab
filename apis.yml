@@ -35,6 +35,12 @@ apis:
   tags:
   - 3D
   - Models
+  - Downloads
+  - glTF
+  - USDZ
+  tags_raw:
+  - 3D
+  - Models
   - Download
   - glTF
   - USDZ
@@ -68,6 +74,9 @@ apis:
 - aid: sketchfab:sketchfab-oauth-api
   name: Sketchfab OAuth 2.0 API
   tags:
+  - Authentication
+  - Authorization
+  tags_raw:
   - OAuth
   - Authentication
   - Authorization
@@ -123,6 +132,8 @@ apis:
   humanURL: https://sketchfab.com/developers/data-api
   baseURL: https://api.sketchfab.com
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
@@ -195,6 +206,8 @@ apis:
   humanURL: https://sketchfab.com/developers/data-api
   baseURL: https://api.sketchfab.com
   tags:
+  - Organization
+  tags_raw:
   - Orgs
   properties:
   - type: OpenAPI
@@ -249,6 +262,8 @@ apis:
   humanURL: https://sketchfab.com/developers/data-api
   baseURL: https://api.sketchfab.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
