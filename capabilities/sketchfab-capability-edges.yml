@@ -1,0 +1,26 @@
+slug: sketchfab
+provider: Sketchfab
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Media, Entertainment & Telecom Content
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Models
+  spec_file: sketchfab-models-api-openapi.yml
+  capability_id: BC-3710
+  capability_id_l1: BC-3710
+  capability_name: Media Asset Management
+  confidence: 0.75
+  evidence: 'POST /v3/models  uploadModel  Upload A Model ... PATCH /v3/models/{uid}  updateModel  Update
+    A Model; schemas: ModelUpdate, Category, Model, ModelList'
+  reason: Upload (ingest), retrieve, update metadata and delete of 3D content assets, with Category/Model
+    metadata schemas — the core of digital/media asset management for this platform. Ambiguous between
+    ingest and metadata cataloguing sub-capabilities, so L1 only.
