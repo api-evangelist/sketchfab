@@ -1,23 +1,208 @@
-generated: '2026-07-15'
+generated: '2026-09-16'
 method: generated
-source: openapi/sketchfab-download-api-openapi.yml, openapi/sketchfab-oauth-api-openapi.yml,
-  openapi/sketchfab-oembed-api-openapi.yml
+source: openapi/sketchfab-bookmarks-api-openapi.yml, openapi/sketchfab-categories-api-openapi.yml,
+  openapi/sketchfab-collections-api-openapi.yml, openapi/sketchfab-comments-api-openapi.yml,
+  openapi/sketchfab-download-api-openapi.yml, openapi/sketchfab-likes-api-openapi.yml, openapi/sketchfab-models-api-openapi.yml,
+  openapi/sketchfab-o-embed-api-openapi.yml, openapi/sketchfab-oauth-api-openapi.yml, openapi/sketchfab-orgs-api-openapi.yml,
+  openapi/sketchfab-search-api-openapi.yml, openapi/sketchfab-tags-api-openapi.yml, openapi/sketchfab-users-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 4
+  operations: 24
   by_action_class:
-    connected: 3
-    acting: 1
+    connected: 16
+    acting: 8
   by_consequence:
-    read: 3
-    write: 1
+    read: 16
+    write: 8
   human_in_the_loop_required: 0
 operations:
+- path: /v3/me/bookmarks
+  method: get
+  operationId: listBookmarks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/categories
+  method: get
+  operationId: listCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/collections
+  method: get
+  operationId: listCollections
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/collections
+  method: post
+  operationId: createCollection
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v3/collections/{uid}/models
+  method: post
+  operationId: addModelToCollection
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v3/models/{uid}/comments
+  method: get
+  operationId: listModelComments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /v3/models/{uid}/download
   method: get
   operationId: getModelDownload
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/models/{uid}/likes
+  method: post
+  operationId: likeModel
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v3/models/{uid}/likes
+  method: delete
+  operationId: unlikeModel
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v3/models
+  method: get
+  operationId: searchModels
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/models
+  method: post
+  operationId: uploadModel
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v3/models/{uid}
+  method: get
+  operationId: getModel
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/models/{uid}
+  method: patch
+  operationId: updateModel
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v3/models/{uid}
+  method: delete
+  operationId: deleteModel
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /oembed
+  method: get
+  operationId: getOEmbed
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -51,9 +236,69 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /oembed
+- path: /v3/orgs/{org}
   method: get
-  operationId: getOEmbed
+  operationId: getOrg
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/orgs/{org}/projects
+  method: get
+  operationId: listOrgProjects
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/models
+  method: get
+  operationId: searchModels
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/search
+  method: get
+  operationId: search
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/tags
+  method: get
+  operationId: listTags
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/me
+  method: get
+  operationId: getCurrentUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/users/{username}
+  method: get
+  operationId: getUser
   x-agentic-access:
     action-class: connected
     consequence: read
