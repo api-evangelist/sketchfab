@@ -25,10 +25,11 @@ apis:
   - url: https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js
     type: SDKs
     name: Sketchfab Viewer JavaScript SDK
-  description: Client-side JavaScript library for controlling an embedded Sketchfab 3D viewer. Exposes
-    camera control, screenshot capture, annotation, material and texture manipulation, post-processing
-    filters, animation playback, and an event stream (viewerready, click, annotationSelect, animationPlay,
-    etc.). Distributed as a browser-loadable script from static.sketchfab.com and published on npm.
+  description: >-
+    Client-side JavaScript library for controlling an embedded Sketchfab 3D viewer. Exposes camera control,
+    screenshot capture, annotation, material and texture manipulation, post-processing filters, animation
+    playback, and an event stream (viewerready, click, annotationSelect, animationPlay, etc.). Distributed
+    as a browser-loadable script from static.sketchfab.com and published on npm.
 - aid: sketchfab:sketchfab-download-api
   name: Sketchfab Download API
   tags:
@@ -49,45 +50,10 @@ apis:
     type: Documentation
   - url: openapi/sketchfab-download-api-openapi.yml
     type: OpenAPI
-  description: Programmatic download of 3D models from Sketchfab's library in glTF, GLB, and USDZ formats.
-    Requires end-user OAuth authentication. Source formats (FBX, OBJ, etc.) are not exposed through the
-    public API; application-level download access without user authentication requires a contract with
-    Sketchfab.
-- aid: sketchfab:sketchfab-oembed-api
-  name: Sketchfab oEmbed API
-  tags:
-  - 3D
-  - Embed
-  - oEmbed
-  - Models
-  humanURL: https://sketchfab.com/developers/oembed
-  properties:
-  - url: https://sketchfab.com/developers/oembed
-    type: Documentation
-  - url: openapi/sketchfab-oembed-api-openapi.yml
-    type: OpenAPI
-  description: oEmbed-protocol endpoint at https://sketchfab.com/oembed that returns JSON containing an
-    HTML <iframe> snippet for any Sketchfab model or playlist URL. Supports maxwidth and maxheight parameters;
-    always returns a 16:9 viewer.
-- aid: sketchfab:sketchfab-oauth-api
-  name: Sketchfab OAuth 2.0 API
-  tags:
-  - Authentication
-  - Authorization
-  tags_raw:
-  - OAuth
-  - Authentication
-  - Authorization
-  humanURL: https://sketchfab.com/developers/oauth
-  properties:
-  - url: https://sketchfab.com/developers/oauth
-    type: Documentation
-  - url: openapi/sketchfab-oauth-api-openapi.yml
-    type: OpenAPI
-  description: OAuth 2.0 authorization server for the Sketchfab platform. Supports Authorization Code,
-    Implicit, and Resource Owner Password Credentials grant types plus refresh-token rotation. Authorize
-    endpoint at /oauth2/authorize/ and token endpoint at /oauth2/token/. Access tokens expire after one
-    month.
+  description: >-
+    Programmatic download of 3D models from Sketchfab's library in glTF, GLB, and USDZ formats. Requires
+    end-user OAuth authentication. Source formats (FBX, OBJ, etc.) are not exposed through the public
+    API; application-level download access without user authentication requires a contract with Sketchfab.
 - aid: sketchfab:sketchfab-bookmarks-api
   name: Sketchfab Bookmarks API
   description: Personal bookmarks.
@@ -274,6 +240,34 @@ apis:
     url: json-schema/sketchfab-model-schema.json
   - type: JSONLD
     url: json-ld/sketchfab-context.jsonld
+- aid: sketchfab:sketchfab-o-embed-api
+  name: Sketchfab o Embed API
+  description: oEmbed-protocol embed endpoint.
+  humanURL: https://sketchfab.com/developers/viewer
+  baseURL: https://api.sketchfab.com
+  tags:
+  - o Embed
+  properties:
+  - type: OpenAPI
+    url: openapi/sketchfab-o-embed-api-openapi.yml
+  - type: Documentation
+    url: https://sketchfab.com/developers/oembed
+  - type: Documentation
+    url: https://sketchfab.com/developers/oauth
+- aid: sketchfab:sketchfab-oauth-api
+  name: Sketchfab O Auth API
+  description: OAuth 2.0 authorization and token endpoints.
+  humanURL: https://sketchfab.com/developers/viewer
+  baseURL: https://api.sketchfab.com
+  tags:
+  - OAuth
+  properties:
+  - type: OpenAPI
+    url: openapi/sketchfab-oauth-api-openapi.yml
+  - type: Documentation
+    url: https://sketchfab.com/developers/oembed
+  - type: Documentation
+    url: https://sketchfab.com/developers/oauth
 name: Sketchfab
 tags:
 - 3D
