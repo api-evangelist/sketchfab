@@ -246,6 +246,8 @@ apis:
   humanURL: https://sketchfab.com/developers/viewer
   baseURL: https://api.sketchfab.com
   tags:
+  - oEmbed
+  tags_raw:
   - o Embed
   properties:
   - type: OpenAPI
@@ -260,6 +262,8 @@ apis:
   humanURL: https://sketchfab.com/developers/viewer
   baseURL: https://api.sketchfab.com
   tags:
+  - Authentication
+  tags_raw:
   - OAuth
   properties:
   - type: OpenAPI
