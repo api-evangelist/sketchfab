@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
   title: Sketchfab Data Models API
-  description: 'The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.
-
-    '
+  description: The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.
   version: v3
   contact:
     name: Sketchfab Developer Support
@@ -185,15 +183,47 @@ paths:
         '404':
           $ref: '#/components/responses/Error'
 components:
-  parameters:
-    ModelUid:
-      name: uid
-      in: path
-      required: true
-      description: Sketchfab model UID (hex string in the URL after /models/).
-      schema:
-        type: string
   schemas:
+    Category:
+      type: object
+      properties:
+        slug:
+          type: string
+        name:
+          type: string
+        uri:
+          type: string
+          format: uri
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
+    ModelUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        categories:
+          type: array
+          items:
+            type: string
+        license:
+          type: string
+        private:
+          type: boolean
+        password:
+          type: string
+        isPublished:
+          type: boolean
     Model:
       type: object
       properties:
@@ -275,39 +305,6 @@ components:
           description: Plan slug (basic, plus, pro, premium, business, enterprise).
         avatar:
           type: object
-    ModelUpdate:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        tags:
-          type: array
-          items:
-            type: string
-        categories:
-          type: array
-          items:
-            type: string
-        license:
-          type: string
-        private:
-          type: boolean
-        password:
-          type: string
-        isPublished:
-          type: boolean
-    Category:
-      type: object
-      properties:
-        slug:
-          type: string
-        name:
-          type: string
-        uri:
-          type: string
-          format: uri
     ModelList:
       type: object
       properties:
@@ -324,13 +321,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Model'
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-        code:
-          type: string
   responses:
     Error:
       description: Error response.
@@ -338,6 +328,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  parameters:
+    ModelUid:
+      name: uid
+      in: path
+      required: true
+      description: Sketchfab model UID (hex string in the URL after /models/).
+      schema:
+        type: string
   securitySchemes:
     OAuth2:
       type: oauth2

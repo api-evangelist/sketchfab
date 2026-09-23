@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
   title: Sketchfab Data Users API
-  description: 'The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.
-
-    '
+  description: The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.
   version: v3
   contact:
     name: Sketchfab Developer Support
@@ -58,21 +56,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/User'
 components:
-  responses:
-    Error:
-      description: Error response.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-        code:
-          type: string
     User:
       type: object
       properties:
@@ -90,6 +74,20 @@ components:
           description: Plan slug (basic, plus, pro, premium, business, enterprise).
         avatar:
           type: object
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
+  responses:
+    Error:
+      description: Error response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     OAuth2:
       type: oauth2

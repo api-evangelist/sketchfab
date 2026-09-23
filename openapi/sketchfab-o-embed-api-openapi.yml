@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Sketchfab Download O Embed API
-  description: 'Programmatic download of downloadable Sketchfab models in glTF, GLB, and USDZ formats. The endpoint returns short-lived signed URLs for each available format. The caller must be authenticated on behalf of an end user (OAuth Authorization Code or Implicit flow); application-level downloads without user authentication require a direct contract with Sketchfab. Source formats (FBX, OBJ) are not exposed.
-
-    '
+  title: Sketchfab Download o Embed API
+  description: Programmatic download of downloadable Sketchfab models in glTF, GLB, and USDZ formats. The endpoint returns short-lived signed URLs for each available format. The caller must be authenticated on behalf of an end user (OAuth Authorization Code or Implicit flow); application-level downloads without user authentication require a direct contract with Sketchfab. Source formats (FBX, OBJ) are not exposed.
   version: v3
   contact:
     name: Sketchfab Developer Support
@@ -17,7 +15,7 @@ servers:
 security:
 - OAuth2: []
 tags:
-- name: oEmbed
+- name: o Embed
   description: oEmbed-protocol embed endpoint.
 paths:
   /oembed:
@@ -26,7 +24,7 @@ paths:
       description: Resolve a Sketchfab model or playlist URL into an oEmbed JSON response carrying an iframe embed snippet.
       operationId: getOEmbed
       tags:
-      - oEmbed
+      - o Embed
       parameters:
       - name: url
         in: query

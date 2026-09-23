@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
   title: Sketchfab Data Search API
-  description: 'The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.
-
-    '
+  description: The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.
   version: v3
   contact:
     name: Sketchfab Developer Support
@@ -106,6 +104,49 @@ paths:
                       type: object
 components:
   schemas:
+    User:
+      type: object
+      properties:
+        uid:
+          type: string
+        username:
+          type: string
+        displayName:
+          type: string
+        profileUrl:
+          type: string
+          format: uri
+        account:
+          type: string
+          description: Plan slug (basic, plus, pro, premium, business, enterprise).
+        avatar:
+          type: object
+    ModelList:
+      type: object
+      properties:
+        cursors:
+          type: object
+          properties:
+            next:
+              type: string
+              nullable: true
+            previous:
+              type: string
+              nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
+    Category:
+      type: object
+      properties:
+        slug:
+          type: string
+        name:
+          type: string
+        uri:
+          type: string
+          format: uri
     Model:
       type: object
       properties:
@@ -170,49 +211,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    User:
-      type: object
-      properties:
-        uid:
-          type: string
-        username:
-          type: string
-        displayName:
-          type: string
-        profileUrl:
-          type: string
-          format: uri
-        account:
-          type: string
-          description: Plan slug (basic, plus, pro, premium, business, enterprise).
-        avatar:
-          type: object
-    ModelList:
-      type: object
-      properties:
-        cursors:
-          type: object
-          properties:
-            next:
-              type: string
-              nullable: true
-            previous:
-              type: string
-              nullable: true
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Model'
-    Category:
-      type: object
-      properties:
-        slug:
-          type: string
-        name:
-          type: string
-        uri:
-          type: string
-          format: uri
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
   title: Sketchfab Download API
-  description: 'Programmatic download of downloadable Sketchfab models in glTF, GLB, and USDZ formats. The endpoint returns short-lived signed URLs for each available format. The caller must be authenticated on behalf of an end user (OAuth Authorization Code or Implicit flow); application-level downloads without user authentication require a direct contract with Sketchfab. Source formats (FBX, OBJ) are not exposed.
-
-    '
+  description: Programmatic download of downloadable Sketchfab models in glTF, GLB, and USDZ formats. The endpoint returns short-lived signed URLs for each available format. The caller must be authenticated on behalf of an end user (OAuth Authorization Code or Implicit flow); application-level downloads without user authentication require a direct contract with Sketchfab. Source formats (FBX, OBJ) are not exposed.
   version: v3
   contact:
     name: Sketchfab Developer Support
@@ -48,23 +46,7 @@ paths:
         '404':
           $ref: '#/components/responses/Error'
 components:
-  responses:
-    Error:
-      description: Error response.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    DownloadEnvelope:
-      type: object
-      properties:
-        gltf:
-          $ref: '#/components/schemas/DownloadEntry'
-        glb:
-          $ref: '#/components/schemas/DownloadEntry'
-        usdz:
-          $ref: '#/components/schemas/DownloadEntry'
     DownloadEntry:
       type: object
       properties:
@@ -85,6 +67,22 @@ components:
           type: string
         code:
           type: string
+    DownloadEnvelope:
+      type: object
+      properties:
+        gltf:
+          $ref: '#/components/schemas/DownloadEntry'
+        glb:
+          $ref: '#/components/schemas/DownloadEntry'
+        usdz:
+          $ref: '#/components/schemas/DownloadEntry'
+  responses:
+    Error:
+      description: Error response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     OAuth2:
       type: oauth2

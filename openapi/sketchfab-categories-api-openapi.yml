@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
   title: Sketchfab Data Categories API
-  description: 'The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.
-
-    '
+  description: The Sketchfab Data API v3 provides programmatic read and write access to Sketchfab content. Authenticated callers can upload new 3D models, edit model metadata and settings, manage collections, comments, likes, and bookmarks, search the public model catalog, and administer organizations and projects. Public endpoints (model search, model detail, user profile) are available without authentication.
   version: v3
   contact:
     name: Sketchfab Developer Support

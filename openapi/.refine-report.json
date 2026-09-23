@@ -1,53 +1,48 @@
 {
   "provider": "sketchfab",
   "sources": [
-    "sketchfab-bookmarks-api-openapi.yml",
-    "sketchfab-categories-api-openapi.yml",
-    "sketchfab-collections-api-openapi.yml",
-    "sketchfab-comments-api-openapi.yml",
+    "_original/sketchfab-data-api-openapi.yml",
     "sketchfab-download-api-openapi.yml",
-    "sketchfab-likes-api-openapi.yml",
-    "sketchfab-models-api-openapi.yml",
-    "sketchfab-oauth-api-openapi.yml",
-    "sketchfab-oembed-api-openapi.yml",
-    "sketchfab-orgs-api-openapi.yml",
-    "sketchfab-search-api-openapi.yml",
-    "sketchfab-tags-api-openapi.yml",
-    "sketchfab-users-api-openapi.yml"
+    "sketchfab-o-auth-api-openapi.yml",
+    "sketchfab-o-embed-api-openapi.yml"
   ],
   "outputs": [
     "sketchfab-bookmarks-api-openapi.yml",
     "sketchfab-categories-api-openapi.yml",
     "sketchfab-collections-api-openapi.yml",
     "sketchfab-comments-api-openapi.yml",
-    "sketchfab-download-api-openapi.yml",
     "sketchfab-likes-api-openapi.yml",
     "sketchfab-models-api-openapi.yml",
-    "sketchfab-oauth-api-openapi.yml",
-    "sketchfab-oembed-api-openapi.yml",
     "sketchfab-orgs-api-openapi.yml",
     "sketchfab-search-api-openapi.yml",
     "sketchfab-tags-api-openapi.yml",
-    "sketchfab-users-api-openapi.yml"
+    "sketchfab-users-api-openapi.yml",
+    "sketchfab-download-api-openapi.yml",
+    "sketchfab-o-auth-api-openapi.yml",
+    "sketchfab-o-embed-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
-  "warnings": [],
+  "warnings": [
+    "sketchfab-download-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v3/models/{uid}/download get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "sketchfab-o-auth-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /oauth2/authorize/ get, /oauth2/token/ post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "sketchfab-o-embed-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /oembed get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
   "notes": [
-    "sketchfab-bookmarks-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "sketchfab-categories-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "sketchfab-collections-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "sketchfab-comments-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "sketchfab-download-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "sketchfab-likes-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "sketchfab-models-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "sketchfab-oauth-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "sketchfab-oembed-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "sketchfab-orgs-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "sketchfab-search-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "sketchfab-tags-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "sketchfab-users-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sketchfab-data-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "sketchfab-bookmarks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sketchfab-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sketchfab-collections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sketchfab-comments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sketchfab-likes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sketchfab-models-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sketchfab-orgs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sketchfab-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sketchfab-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sketchfab-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
