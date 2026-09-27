@@ -3,8 +3,8 @@
   "sources": [
     "_original/sketchfab-data-api-openapi.yml",
     "sketchfab-download-api-openapi.yml",
-    "sketchfab-o-auth-api-openapi.yml",
-    "sketchfab-o-embed-api-openapi.yml"
+    "sketchfab-o-embed-api-openapi.yml",
+    "sketchfab-oauth-api-openapi.yml"
   ],
   "outputs": [
     "sketchfab-bookmarks-api-openapi.yml",
@@ -18,15 +18,15 @@
     "sketchfab-tags-api-openapi.yml",
     "sketchfab-users-api-openapi.yml",
     "sketchfab-download-api-openapi.yml",
-    "sketchfab-o-auth-api-openapi.yml",
-    "sketchfab-o-embed-api-openapi.yml"
+    "sketchfab-o-embed-api-openapi.yml",
+    "sketchfab-oauth-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [
     "sketchfab-download-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v3/models/{uid}/download get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "sketchfab-o-auth-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /oauth2/authorize/ get, /oauth2/token/ post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "sketchfab-o-embed-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /oembed get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+    "sketchfab-o-embed-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /oembed get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "sketchfab-oauth-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /oauth2/authorize/ get, /oauth2/token/ post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
   ],
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",

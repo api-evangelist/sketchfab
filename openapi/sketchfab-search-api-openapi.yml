@@ -104,39 +104,6 @@ paths:
                       type: object
 components:
   schemas:
-    User:
-      type: object
-      properties:
-        uid:
-          type: string
-        username:
-          type: string
-        displayName:
-          type: string
-        profileUrl:
-          type: string
-          format: uri
-        account:
-          type: string
-          description: Plan slug (basic, plus, pro, premium, business, enterprise).
-        avatar:
-          type: object
-    ModelList:
-      type: object
-      properties:
-        cursors:
-          type: object
-          properties:
-            next:
-              type: string
-              nullable: true
-            previous:
-              type: string
-              nullable: true
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Model'
     Category:
       type: object
       properties:
@@ -211,6 +178,39 @@ components:
         createdAt:
           type: string
           format: date-time
+    ModelList:
+      type: object
+      properties:
+        cursors:
+          type: object
+          properties:
+            next:
+              type: string
+              nullable: true
+            previous:
+              type: string
+              nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
+    User:
+      type: object
+      properties:
+        uid:
+          type: string
+        username:
+          type: string
+        displayName:
+          type: string
+        profileUrl:
+          type: string
+          format: uri
+        account:
+          type: string
+          description: Plan slug (basic, plus, pro, premium, business, enterprise).
+        avatar:
+          type: object
   securitySchemes:
     OAuth2:
       type: oauth2

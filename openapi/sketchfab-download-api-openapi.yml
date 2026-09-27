@@ -46,7 +46,30 @@ paths:
         '404':
           $ref: '#/components/responses/Error'
 components:
+  responses:
+    Error:
+      description: Error response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    DownloadEnvelope:
+      type: object
+      properties:
+        gltf:
+          $ref: '#/components/schemas/DownloadEntry'
+        glb:
+          $ref: '#/components/schemas/DownloadEntry'
+        usdz:
+          $ref: '#/components/schemas/DownloadEntry'
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
     DownloadEntry:
       type: object
       properties:
@@ -60,29 +83,6 @@ components:
         expires:
           type: integer
           description: Seconds until the signed URL expires.
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-        code:
-          type: string
-    DownloadEnvelope:
-      type: object
-      properties:
-        gltf:
-          $ref: '#/components/schemas/DownloadEntry'
-        glb:
-          $ref: '#/components/schemas/DownloadEntry'
-        usdz:
-          $ref: '#/components/schemas/DownloadEntry'
-  responses:
-    Error:
-      description: Error response.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     OAuth2:
       type: oauth2

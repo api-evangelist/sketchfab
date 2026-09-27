@@ -52,14 +52,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  schemas:
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-        code:
-          type: string
   parameters:
     ModelUid:
       name: uid
@@ -68,6 +60,14 @@ components:
       description: Sketchfab model UID (hex string in the URL after /models/).
       schema:
         type: string
+  schemas:
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
   securitySchemes:
     OAuth2:
       type: oauth2
