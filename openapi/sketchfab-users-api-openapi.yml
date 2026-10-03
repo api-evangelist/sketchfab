@@ -64,13 +64,6 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-        code:
-          type: string
     User:
       type: object
       properties:
@@ -88,6 +81,13 @@ components:
           description: Plan slug (basic, plus, pro, premium, business, enterprise).
         avatar:
           type: object
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
   securitySchemes:
     OAuth2:
       type: oauth2

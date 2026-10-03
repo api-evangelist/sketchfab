@@ -207,6 +207,16 @@ components:
           type: string
         isPublished:
           type: boolean
+    Category:
+      type: object
+      properties:
+        slug:
+          type: string
+        name:
+          type: string
+        uri:
+          type: string
+          format: uri
     ModelList:
       type: object
       properties:
@@ -223,16 +233,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Model'
-    Category:
+    User:
       type: object
       properties:
-        slug:
+        uid:
           type: string
-        name:
+        username:
           type: string
-        uri:
+        displayName:
+          type: string
+        profileUrl:
           type: string
           format: uri
+        account:
+          type: string
+          description: Plan slug (basic, plus, pro, premium, business, enterprise).
+        avatar:
+          type: object
     Model:
       type: object
       properties:
@@ -304,23 +321,6 @@ components:
           type: string
         code:
           type: string
-    User:
-      type: object
-      properties:
-        uid:
-          type: string
-        username:
-          type: string
-        displayName:
-          type: string
-        profileUrl:
-          type: string
-          format: uri
-        account:
-          type: string
-          description: Plan slug (basic, plus, pro, premium, business, enterprise).
-        avatar:
-          type: object
   parameters:
     ModelUid:
       name: uid
