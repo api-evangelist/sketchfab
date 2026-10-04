@@ -101,6 +101,23 @@ paths:
           description: Model(s) added.
 components:
   schemas:
+    User:
+      type: object
+      properties:
+        uid:
+          type: string
+        username:
+          type: string
+        displayName:
+          type: string
+        profileUrl:
+          type: string
+          format: uri
+        account:
+          type: string
+          description: Plan slug (basic, plus, pro, premium, business, enterprise).
+        avatar:
+          type: object
     Collection:
       type: object
       properties:
@@ -124,23 +141,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Collection'
-    User:
-      type: object
-      properties:
-        uid:
-          type: string
-        username:
-          type: string
-        displayName:
-          type: string
-        profileUrl:
-          type: string
-          format: uri
-        account:
-          type: string
-          description: Plan slug (basic, plus, pro, premium, business, enterprise).
-        avatar:
-          type: object
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -42,6 +42,18 @@ paths:
                       $ref: '#/components/schemas/Comment'
 components:
   schemas:
+    Comment:
+      type: object
+      properties:
+        uid:
+          type: string
+        body:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
     User:
       type: object
       properties:
@@ -59,18 +71,6 @@ components:
           description: Plan slug (basic, plus, pro, premium, business, enterprise).
         avatar:
           type: object
-    Comment:
-      type: object
-      properties:
-        uid:
-          type: string
-        body:
-          type: string
-        user:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          type: string
-          format: date-time
   parameters:
     ModelUid:
       name: uid

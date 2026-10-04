@@ -54,19 +54,6 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    DownloadEntry:
-      type: object
-      properties:
-        url:
-          type: string
-          format: uri
-          description: Short-lived signed download URL.
-        size:
-          type: integer
-          description: Archive size in bytes.
-        expires:
-          type: integer
-          description: Seconds until the signed URL expires.
     DownloadEnvelope:
       type: object
       properties:
@@ -83,6 +70,19 @@ components:
           type: string
         code:
           type: string
+    DownloadEntry:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          description: Short-lived signed download URL.
+        size:
+          type: integer
+          description: Archive size in bytes.
+        expires:
+          type: integer
+          description: Seconds until the signed URL expires.
   securitySchemes:
     OAuth2:
       type: oauth2

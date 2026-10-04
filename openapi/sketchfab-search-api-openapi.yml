@@ -104,6 +104,32 @@ paths:
                       type: object
 components:
   schemas:
+    ModelList:
+      type: object
+      properties:
+        cursors:
+          type: object
+          properties:
+            next:
+              type: string
+              nullable: true
+            previous:
+              type: string
+              nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
+    Category:
+      type: object
+      properties:
+        slug:
+          type: string
+        name:
+          type: string
+        uri:
+          type: string
+          format: uri
     User:
       type: object
       properties:
@@ -185,32 +211,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    Category:
-      type: object
-      properties:
-        slug:
-          type: string
-        name:
-          type: string
-        uri:
-          type: string
-          format: uri
-    ModelList:
-      type: object
-      properties:
-        cursors:
-          type: object
-          properties:
-            next:
-              type: string
-              nullable: true
-            previous:
-              type: string
-              nullable: true
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Model'
   securitySchemes:
     OAuth2:
       type: oauth2
