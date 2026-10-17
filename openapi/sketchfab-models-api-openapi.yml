@@ -184,6 +184,52 @@ paths:
           $ref: '#/components/responses/Error'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
+    ModelList:
+      type: object
+      properties:
+        cursors:
+          type: object
+          properties:
+            next:
+              type: string
+              nullable: true
+            previous:
+              type: string
+              nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
+    ModelUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        categories:
+          type: array
+          items:
+            type: string
+        license:
+          type: string
+        private:
+          type: boolean
+        password:
+          type: string
+        isPublished:
+          type: boolean
     User:
       type: object
       properties:
@@ -201,16 +247,6 @@ components:
           description: Plan slug (basic, plus, pro, premium, business, enterprise).
         avatar:
           type: object
-    Category:
-      type: object
-      properties:
-        slug:
-          type: string
-        name:
-          type: string
-        uri:
-          type: string
-          format: uri
     Model:
       type: object
       properties:
@@ -275,59 +311,16 @@ components:
         createdAt:
           type: string
           format: date-time
-    ModelList:
+    Category:
       type: object
       properties:
-        cursors:
-          type: object
-          properties:
-            next:
-              type: string
-              nullable: true
-            previous:
-              type: string
-              nullable: true
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Model'
-    ModelUpdate:
-      type: object
-      properties:
+        slug:
+          type: string
         name:
           type: string
-        description:
+        uri:
           type: string
-        tags:
-          type: array
-          items:
-            type: string
-        categories:
-          type: array
-          items:
-            type: string
-        license:
-          type: string
-        private:
-          type: boolean
-        password:
-          type: string
-        isPublished:
-          type: boolean
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-        code:
-          type: string
-  responses:
-    Error:
-      description: Error response.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+          format: uri
   parameters:
     ModelUid:
       name: uid
@@ -336,6 +329,13 @@ components:
       description: Sketchfab model UID (hex string in the URL after /models/).
       schema:
         type: string
+  responses:
+    Error:
+      description: Error response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     OAuth2:
       type: oauth2

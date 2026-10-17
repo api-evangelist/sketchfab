@@ -118,6 +118,13 @@ components:
           description: Plan slug (basic, plus, pro, premium, business, enterprise).
         avatar:
           type: object
+    CollectionList:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Collection'
     Collection:
       type: object
       properties:
@@ -134,13 +141,6 @@ components:
           format: uri
         user:
           $ref: '#/components/schemas/User'
-    CollectionList:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Collection'
   securitySchemes:
     OAuth2:
       type: oauth2

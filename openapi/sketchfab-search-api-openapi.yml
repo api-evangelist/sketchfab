@@ -120,16 +120,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Model'
-    Category:
-      type: object
-      properties:
-        slug:
-          type: string
-        name:
-          type: string
-        uri:
-          type: string
-          format: uri
     User:
       type: object
       properties:
@@ -147,6 +137,16 @@ components:
           description: Plan slug (basic, plus, pro, premium, business, enterprise).
         avatar:
           type: object
+    Category:
+      type: object
+      properties:
+        slug:
+          type: string
+        name:
+          type: string
+        uri:
+          type: string
+          format: uri
     Model:
       type: object
       properties:
