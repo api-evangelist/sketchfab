@@ -26,3 +26,16 @@
     detected: '2026-10-14'
   status: not-a-workflow
   arazzo: null
+- slug: sketchfab-autodesk-own
+  label: Autodesk (own)
+  partner: autodesk
+  partner_name: Autodesk (own)
+  category: MAYA
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.autodesk.com/apps/3f0d6927-e5b3-49f5-8bdb-3583b3dd4441
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
